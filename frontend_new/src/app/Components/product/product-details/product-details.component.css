@@ -1,0 +1,129 @@
+.card {
+    transition: all .2s ease-in-out 0s;
+    border-radius: 3px;
+}
+
+.card-main {
+    position: relative;
+}
+
+.discount {
+    background: #0DEC67;
+    z-index: 3;
+    position: relative;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    display: block;
+    text-transform: uppercase;
+    width: 70px;
+    height: 30px;
+    border-radius: 0 15px 15px 0;
+    line-height: 30px;
+    font-style: italic;
+    left: -9px;
+    top: 30px;
+}
+
+.discount::after {
+    border-top: 6px solid #c80;
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    border-left: 8px solid transparent;
+    border-right: 0px solid transparent;
+}
+
+.label {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+    z-index: 2;
+    line-height: 100%;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.label-green {
+    padding: 5px 8px;
+    background-color: #fa0;
+}
+
+.image {
+    width: 100%;
+    height: 300px;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+}
+
+.cart-line {
+    height: 2px;
+    background: #f1f1f1;
+}
+
+.product-container {
+    position: absolute;
+    right: -40px;
+    top: 10px;
+    z-index: 4;
+    transition: 0.6s;
+    opacity: 0;
+}
+
+.card:hover .product-container {
+    opacity: 1;
+    right: 10px;
+}
+
+
+.p {
+    border: 2px;
+    border: 1px solid rgb(233, 233, 233);
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.p img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.p img:hover {
+    opacity: 1;
+}
+
+
+.available {
+    color: #0DEC67;
+}
+
+.out-of-stock {
+    color: red !important;
+}
+
+ul {
+    list-style: none;
+}
+
+.title {
+    padding-bottom: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.contact-card {
+    background-color: #f3f7fb;
+    display: flex;
+    border-radius: 10px;
+    margin-left: 70px;
+    margin-right: 70px;
+}

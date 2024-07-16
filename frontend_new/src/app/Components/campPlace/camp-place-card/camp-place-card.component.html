@@ -1,0 +1,19 @@
+<a [routerLink]="['/CampPlaceDetails',campPlace.idCampPlace]">
+
+    <div class="ui-card mx-2 px-2">
+
+        (click)="navigateToEvent(campPlace)"
+        <img [src]="'data:image/jpeg;base64,' + campPlace.image">
+
+        <div class="description">
+
+            <h4>{{ campPlace.name }}</h4>
+
+            <p>{{campPlace.state}}</p>
+
+
+        </div>
+
+    </div>
+
+</a>

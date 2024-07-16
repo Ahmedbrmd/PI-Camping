@@ -1,0 +1,24 @@
+<a [routerLink]="['/ProductDetails', product.idProduct]">
+    <div class="card m-4">
+        <div class="card-main">
+            <div class="discount">New</div>
+            <div class="label label-green">{{product.category}}</div>
+            <!-- <div class="product-container">
+        <div class="p" (mouseover)="imageChange(equipement,0)"><img [src]="'data:image/jpeg;base64,'+product.files[0].file"
+                alt="Product"></div>
+        <div *ngIf="product.files[1].file" class="p" (mouseover)="imageChange(equipement,1)"><img [src]="'data:image/jpeg;base64,'+product.files[1].file"
+                alt="Product"></div>
+        <div *ngIf="product.files[2].file" class="p" (mouseover)="imageChange(equipement,2)"><img [src]="'data:image/jpeg;base64,'+product.files[2].file"
+                alt="Product"></div>
+    </div> -->
+            <div class="image">
+                <img [src]="'data:image/jpeg;base64,'+product.image" alt="Product">
+            </div>
+            <div class="cart-line"></div>
+        </div>
+        <div class="content">
+            <a href="#">{{product.name}}</a>
+            <p><span class="money">{{product.price}}DT</span></p>
+        </div>
+    </div>
+</a>

@@ -1,0 +1,178 @@
+<div class="mx-5">
+    <div class="mx-5 mt-4 mb-4">
+        <h4>Add New Camp Place </h4>
+    </div>
+
+    <div class="card mx-5">
+        <div class="card-body">
+            <form enctype="multipart/form-data" (ngSubmit)="addCampPlace(eventNgForm)" #eventNgForm="ngForm" #form>
+                <div class="container-fluid row mt-2">
+                    <div class="col-lg-6 col-md-12 p-5 container-left-side">
+                        <div class="form-group mb-3">
+                            <label for="name">Name</label>
+                            <input placeholder="Enter the name " #nameRef="ngModel" type="text" required
+                                class="form-control"
+                                [ngClass]="{'is-invalid' :(nameRef.invalid &&(nameRef.touched || nameRef.dirty))}"
+                                id="name" name="name" [(ngModel)]="campPlace.name" required minlength="5">
+                            <div *ngIf="nameRef.invalid && (nameRef.touched ||nameRef.dirty)" class="invalid-feedback">
+                                <div *ngIf="nameRef.errors?.['required']">campPlace Name is required.
+                                </div>
+                                <div *ngIf="nameRef.errors?.['minlength']"> campPlace Name is too short.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="categorySelect" class="form-label">Category</label>
+
+                            <select class="form-select" id="categorySelect" [(ngModel)]="campPlace.category"
+                                name="category">
+                                <option value="" selected disabled>Select category</option>
+                                <option *ngFor="let category of categories" [value]="category">{{
+                                    formatEnumName(category) }}</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group mb-3">
+                            <label for="categorySelect" class="form-label">State</label>
+                            <select class="form-select" id="categorySelect" [(ngModel)]="campPlace.state" name="state">
+                                <option value="" selected disabled>Select state </option>
+
+                                <option *ngFor="let state of states" [value]="state">{{ formatEnumName(state) }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <label class="mb-2">Add Images</label>
+                        <div class="custom-dropzone" ngx-dropzone [multiple]="false" (change)="onSelect($event)">
+                            <ngx-dropzone-label>
+                                <div>
+                                    <i class="bi bi-cloud-arrow-up-fill icon"></i>
+                                    <h4>Drag an image here or browse for an image to upload.</h4>
+                                </div>
+                            </ngx-dropzone-label>
+                            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files"
+                                [file]="f" [removable]="true" (removed)="onRemove(f)">
+                                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                            </ngx-dropzone-image-preview>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 p-5 ">
+
+                        <div class="form-group">
+                            <label class="form-label ">Phone Number</label>
+                            <div class="input-group mb-3">
+                                <input placeholder="Enter the phone number " #telRef="ngModel" type="text"
+                                    class="form-control" required minlength="8"
+                                    [ngClass]="{'is-invalid' :(telRef.invalid &&(telRef.touched || telRef.dirty))}"
+                                    id="campPlace" name="campPlace" [(ngModel)]="campPlace.tel">
+                                <div *ngIf="telRef.invalid && (telRef.touched ||telRef.dirty)" class="invalid-feedback">
+                                    <div *ngIf="telRef.errors?.['required']">campPlace tel is required.
+                                    </div>
+                                    <div *ngIf="telRef.errors?.['minlength']"> tel doit comporter 8 chiffres.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="address">Address</label>
+                            <input placeholder="Enter the address" #addressRef="ngModel" type="text" required
+                                class="form-control"
+                                [ngClass]="{'is-invalid' :(addressRef.invalid &&(addressRef.touched || addressRef.dirty))}"
+                                id="address" name="address" [(ngModel)]="campPlace.address" required minlength="5">
+                            <div *ngIf="addressRef.invalid && (addressRef.touched ||addressRef.dirty)"
+                                class="invalid-feedback">
+                                <div *ngIf="addressRef.errors?.['required']">campPlace address is required.
+                                </div>
+                                <div *ngIf="addressRef.errors?.['minlength']"> campPlace address is too short.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <input placeholder="Enter the email " #emailRef="ngModel" type="email" required
+                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" class="form-control"
+                                [ngClass]="{'is-invalid' :(emailRef.invalid &&(emailRef.touched || emailRef.dirty))}"
+                                id="email" name="email" [(ngModel)]="campPlace.email" required minlength="5">
+                            <div *ngIf="emailRef.invalid && (emailRef.touched ||emailRef.dirty)"
+                                class="invalid-feedback">
+                                <div *ngIf="emailRef.errors?.['required']">campPlace email is required.
+                                </div>
+                                <div *ngIf="emailRef.invalid"> campPlace email is not valid.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-12 justify-content-between px-2">
+                            <div class="form-group col-6" style="width:240px;">
+                                <label class="form-label ">Longitude</label>
+                                <div class="input-group mb-3">
+                                    <input placeholder="Enter the longitude " #longitudeRef="ngModel" type="text"
+                                        class="form-control " required minlength="3"
+                                        [ngClass]="{'is-invalid' :(longitudeRef.invalid &&(longitudeRef.touched || longitudeRef.dirty))}"
+                                        id="longitude" name="longitude" [(ngModel)]="campPlace.longitude">
+                                    <div *ngIf="longitudeRef.invalid && (longitudeRef.touched ||longitudeRef.dirty)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="longitudeRef.errors?.['required']">campPlace longitude is required.
+                                        </div>
+                                        <div *ngIf="longitudeRef.errors?.['minlength']"> longitude doit comporter 3
+                                            chiffres.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-6" style="width:240px;">
+                                <label class="form-label ">Latitude</label>
+                                <div class="input-group mb-3">
+                                    <input placeholder="Enter the laltitude " #latitudeRef="ngModel" type="text"
+                                        class="form-control" required minlength="3"
+                                        [ngClass]="{'is-invalid' :(latitudeRef.invalid &&(latitudeRef.touched || latitudeRef.dirty))}"
+                                        id="latitude" name="latitude" [(ngModel)]="campPlace.latitude">
+                                    <div *ngIf="latitudeRef.invalid && (latitudeRef.touched ||latitudeRef.dirty)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="latitudeRef.errors?.['required']">laltitude is required.
+                                        </div>
+                                        <div *ngIf="latitudeRef.errors?.['minlength']"> laltitude doit comporter 3
+                                            chiffres.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+
+                            <label for="description">Description</label>
+
+                            <textarea placeholder="Enter the description " #descriptionRef="ngModel" rows="4" required
+                                class="form-control"
+                                [ngClass]="{'is-invalid' :(descriptionRef.invalid && (descriptionRef.touched || descriptionRef.dirty))}"
+                                id="description" name="description" [(ngModel)]="campPlace.description" required
+                                minlength="50"></textarea>
+
+                            <div *ngIf="descriptionRef.invalid && (descriptionRef.touched ||descriptionRef.dirty)"
+                                class="invalid-feedback">
+
+                                <div *ngIf="descriptionRef.errors?.['required']">Event Description is required.
+
+                                </div>
+
+                                <div *ngIf="descriptionRef.errors?.['minlength']"> Event Description is too short.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary" [disabled]="!form.checkValidity()">Add
+                                campPlace</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

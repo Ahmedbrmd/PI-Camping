@@ -1,0 +1,29 @@
+.btn-secondary {
+    background-color: #0d0d0d;
+}
+
+.btn-primary {
+    background-color: #0DEC67;
+    border-color: #0DEC67;
+}
+
+.custom-dropzone {
+    border: 2px dashed #c1c1c3;
+    font-size: 14px;
+}
+
+.icon {
+    font-size: 50px;
+    display: inline-block;
+}
+
+.container-left-side {
+    border-right: 1px solid #dee2e6;
+
+}
+
+@media (max-width: 1000px) {
+    .container-left-side {
+        border-right: 0px;
+    }
+}

@@ -1,0 +1,154 @@
+<div class="image-container">
+
+    <img [src]="'data:image/jpeg;base64,'+ selectedCampImage" *ngIf="selectedCampImage" class="big-image">
+
+    <div class="image-overlay">
+        <div class="text-container">
+            <p class="overlay-text">{{campPlace.name}},&nbsp; {{campPlace.state}}</p>
+
+            <p class="state-text"><i class="bi bi-tags-fill"></i>&nbsp; {{campPlace.category}}</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- <div class="image-list">
+  
+    <div *ngFor="let image of campPlace.images" class="list-image-wrapper">
+  
+      <img [src]="'data:image/jpeg;base64,'+ image.image" (click)="selectImage(image.image)" class="list-image">
+  
+    </div>
+  
+  </div> -->
+
+
+<section id="about-us" class="py-5">
+
+    <div class="container reveal fade-left">
+
+        <div class="row abt-in">
+
+            <div class="col-lg-6 col-md-6 col-12 align-self-center">
+
+                <div class="row abt-yrs px-3">
+
+                    <div class="col-lg-5 col-md-5 col-5 pr-0">
+
+                        <div class="about-img-box shrink">
+
+                            <img [src]="'data:image/jpeg;base64,'+campPlace.image">
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-7 col-md-7 col-7">
+
+                        <div class="about-img-box2 shrink mt-4">
+
+                            <img [src]="'data:image/jpeg;base64,'+ campPlace.image">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-12">
+
+                <div class="abt-head text-center text-lg-start text-md-start">
+
+                    <h6 class="abt-sm-head pb-0">About {{campPlace.name}}</h6>
+
+                    <p class="abt-inn-txt">{{campPlace.description}}</p>
+
+                    <div class="row camp-contact">
+
+                        <div class="col-4 text-center">
+
+                            <i class="bi bi-geo-alt-fill"></i>
+
+                            <p>{{campPlace.address}}</p>
+
+                        </div>
+
+                        <div class="col-4 text-center">
+
+                            <i class="bi bi-telephone-fill"></i>
+
+                            <p> +216 {{campPlace.tel}}</p>
+
+                        </div>
+
+                        <div class="col-4 text-center">
+
+                            <i class="bi bi-envelope-at-fill"></i>
+
+                            <p> {{campPlace.email}}</p>
+
+                        </div>
+                        <div class="text-center">
+
+                            <a [routerLink]="['/feedback',campPlace.idCampPlace]" class="custom-btn btn px-5 py-2">
+
+                                <span>Add Feedback</span>
+
+                            </a>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- 
+  <app-google-map></app-google-map> -->
+
+
+<div class=" pt-5 pb-5">
+
+    <h1 class="text-center">Similar Camp Places </h1>
+
+    <div class="container-fluid row my-4">
+        <div class="row mx-5 px-5 my-3">
+
+            <div class="col-lg-3 col-md-6" *ngFor="let camp of campPlaces">
+                <app-camp-place-card [campPlace]="camp"> </app-camp-place-card>
+
+            </div>
+        </div>
+
+
+        <div class="abt-btn my-4 text-center">
+
+            <a routerLink="/listCampPlace" class="custom-btn btn px-5 py-2">
+
+                <span>View More</span>
+
+            </a>
+
+        </div>

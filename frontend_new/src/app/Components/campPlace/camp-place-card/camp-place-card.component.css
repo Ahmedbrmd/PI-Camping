@@ -1,0 +1,72 @@
+.ui-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition: all 0.3s ease-out;
+
+    background: radial-gradient(#111 50%, #000 100%);
+
+    border-radius: 25px;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+
+
+
+}
+
+
+
+
+.ui-card img {
+
+    transform: scale(1.3);
+
+    transition: all 0.3s ease-out;
+
+    width: 100%;
+
+    height: 377px;
+
+}
+
+.ui-card:hover img {
+
+    transform: scale(1.1) translateY(-20px);
+
+}
+
+.ui-card .description {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    padding: 15px;
+
+    width: 100%;
+
+    color: #fff;
+
+    font-size: 18px;
+
+}
+
+
+
+
+.third-card img {
+
+    max-width: 100%;
+
+    height: 774px;
+
+}

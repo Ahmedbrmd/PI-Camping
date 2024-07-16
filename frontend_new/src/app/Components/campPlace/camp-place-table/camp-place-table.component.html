@@ -1,0 +1,99 @@
+<div class="m-3">
+
+
+
+
+    <div class="d-flex justify-content-between align-items-center pb-3 px-3">
+
+
+
+        <div class="d-flex mt-2 align-items-center">
+            <input (keyup.enter)="getFilteredCampPlaces()" type="text" placeholder="Search"
+                [(ngModel)]="campPlaceFilter.searchTerm" class="search-input form-control me-2" #search>
+            <button (click)="getFilteredCampPlaces()" class="btn btn-primary mx-2">Search</button>
+            <button (click)="onReset()" class="btn btn-secondary">Reset</button>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>sort</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item *ngFor="let sort of sortOptions" (click)="selectSortOption(sort.value)"
+                    [ngClass]="{'selected-sort' : sort.value==campPlaceFilter.sort}">
+                    <mat-icon>{{sort.icon}}</mat-icon>
+                    <span>{{sort.name}}</span>
+                </button>
+            </mat-menu>
+        </div>
+        <div class="button-container">
+            <button [routerLink]="['/addEvent/'+(-1)]" class="btn btn-add">Add New Camp Place</button>
+        </div>
+
+
+
+    </div>
+    <table mat-table [dataSource]="campPlaces" class="mat-elevation-z8">
+        <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef>Id</th>
+            <td mat-cell *matCellDef="let element">{{element.idCampPlace}}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element"><a
+                    [routerLink]="['/CampPlaceDetails/'+element.idCampPlace]">{{element.name}}</a></td>
+        </ng-container>
+        <ng-container matColumnDef="CampPlace">
+            <th mat-header-cell *matHeaderCellDef>Camp Place</th>
+            <td mat-cell *matCellDef="let element">{{element.campPlace.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Category">
+            <th mat-header-cell *matHeaderCellDef>Category</th>
+            <td mat-cell *matCellDef="let element">{{formatCategoryName(element.category)}}</td>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="Description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let element">{{element.description | slice:0:40}}{{element.description.length > 40
+                ? '...' : ''}}</td>
+        </ng-container>
+        <ng-container matColumnDef="State">
+            <th mat-header-cell *matHeaderCellDef>State</th>
+            <td mat-cell *matCellDef="let element">{{formatCategoryName(element.state)}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Tel">
+            <th mat-header-cell *matHeaderCellDef>Tel</th>
+            <td mat-cell *matCellDef="let element">{{element.tel}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Longitude">
+            <th mat-header-cell *matHeaderCellDef>Long</th>
+            <td mat-cell *matCellDef="let element">{{(element.longitude)}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Latitude">
+            <th mat-header-cell *matHeaderCellDef>Lat</th>
+            <td mat-cell *matCellDef="let element">{{(element.latitude)}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Address">
+            <th mat-header-cell *matHeaderCellDef>Address</th>
+            <td mat-cell *matCellDef="let element">{{(element.address)}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element">{{(element.email)}}</td>
+        </ng-container>
+
+
+
+
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <a [routerLink]="['/addCampPlace/'+element.idCampPlace]"><i class="bi bi-pencil-square fs-3"></i></a>
+                <a (click)="deleteCampPlace(element)"><i class="bi bi-trash-fill fs-3 ms-4"></i></a>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row;columns:displayedColumns;"></tr>
+    </table>
+</div>

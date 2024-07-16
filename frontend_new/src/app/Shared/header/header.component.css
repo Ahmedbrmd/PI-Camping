@@ -1,0 +1,33 @@
+.navbar-dark {
+    background-color: transparent;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.navbar-inverse {
+    background-color: rgba(13, 13, 13, 0.5) !important;
+}
+
+.logouttext {
+    text-decoration: none !important;
+    cursor: pointer;
+    font-weight: 500;
+    color: #00563B;
+}
+
+.nav-link:hover {
+    border-bottom: solid 2px #00563B;
+}
+
+.nav-link {
+    cursor: pointer;
+    letter-spacing: normal;
+    word-spacing: normal;
+    font-weight: 400;
+    white-space: nowrap;
+    color: inherit;
+}
