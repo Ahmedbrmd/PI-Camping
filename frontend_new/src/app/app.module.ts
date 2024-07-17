@@ -15,7 +15,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddCampPlaceComponent } from './Components/campPlace/add-camp-place/add-camp-place.component';
@@ -35,7 +34,8 @@ import { HeaderComponent } from './Shared/header/header.component';
 import { NotificationService } from './Services/notification.service';
 import { PagingHeaderComponent } from './Shared/paging-header/paging-header.component';
 import { NotificationModule } from './notification.module';
-
+import { FeedbackComponent } from './Components/feedback/feedback.component';
+import { FeedbackListComponent } from './Components/feedback-list/feedback-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +53,9 @@ import { NotificationModule } from './notification.module';
     ProductTableComponent,
     FooterComponent,
     HeaderComponent,
-    PagingHeaderComponent
+    PagingHeaderComponent,
+    FeedbackComponent,
+    FeedbackListComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,9 +76,7 @@ import { NotificationModule } from './notification.module';
     NotificationModule,
     ToastrModule.forRoot(),
   ],
-  providers: [
-    NotificationService,
-  ],
-  bootstrap: [AppComponent]
+  providers: [NotificationService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
