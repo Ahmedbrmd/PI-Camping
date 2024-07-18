@@ -35,6 +35,8 @@ import { HeaderComponent } from './Shared/header/header.component';
 import { NotificationService } from './Services/notification.service';
 import { PagingHeaderComponent } from './Shared/paging-header/paging-header.component';
 import { NotificationModule } from './notification.module';
+import { EventListComponent } from './Components/event/eventlist/eventlist.component';
+import { AddEventComponent } from './Components/event/add-event/add-event.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,10 @@ import { NotificationModule } from './notification.module';
     ProductTableComponent,
     FooterComponent,
     HeaderComponent,
-    PagingHeaderComponent
+    PagingHeaderComponent,
+    EventListComponent,
+    AddEventComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +77,7 @@ import { NotificationModule } from './notification.module';
     NgbModule,
     MatTableModule,
     NotificationModule,
+  
     ToastrModule.forRoot(),
   ],
   providers: [
