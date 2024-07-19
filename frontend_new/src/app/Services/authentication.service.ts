@@ -20,21 +20,21 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   public login(login: LoginRequest): Observable<HttpResponse<LoginResponse>> {
-    return this.http.post<LoginResponse>(`${this.host}/camping/auth/signin`, login, { observe: 'response' });
+    return this.http.post<LoginResponse>(`${this.host}/auth/signin`, login, { observe: 'response' });
   }
 
   public register(user: User): Observable<User> {
-    return this.http.post<User>(`${this.host}/camping/auth/signup`, user);
+    return this.http.post<User>(`${this.host}/auth/signup`, user);
   }
   public logOutFromDB(token: string): Observable<any> {
     const body = { token };
-    return this.http.post<any>(`${this.host}/camping/auth/logout`, body);
+    return this.http.post<any>(`${this.host}/auth/logout`, body);
   }
   refreshToken(tokenRefreshRequest: TokenRefreshRequest): Observable<any> {
-    return this.http.post<any>(`${this.host}/camping/auth/refreshtoken`, tokenRefreshRequest);
+    return this.http.post<any>(`${this.host}/auth/refreshtoken`, tokenRefreshRequest);
   }
   public resetPassword(email: string): Observable<any> {
-    return this.http.get<any>(`${this.host}/camping/auth/resetpassword/${email}`);
+    return this.http.get<any>(`${this.host}/auth/resetpassword/${email}`);
   }
 
 

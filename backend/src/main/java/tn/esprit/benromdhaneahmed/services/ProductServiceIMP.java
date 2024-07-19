@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import tn.esprit.benromdhaneahmed.entities.CampPlace;
 import tn.esprit.benromdhaneahmed.entities.CampPlaceCategory;
 import tn.esprit.benromdhaneahmed.entities.Product;
 import tn.esprit.benromdhaneahmed.entities.ProductCategory;
@@ -67,6 +68,9 @@ public class ProductServiceIMP implements IProduct{
                 maxPrice,
                 search,
                 pageable);
+    }
+    public Product getProductById(int id) {
+        return productRepository.findById(id).orElse(null);
     }
 }
 

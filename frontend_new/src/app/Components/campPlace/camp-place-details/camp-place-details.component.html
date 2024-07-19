@@ -96,7 +96,7 @@
                         </div>
                         <div class="text-center">
 
-                            <a [routerLink]="['/feedback',campPlace.idCampPlace]" class="custom-btn btn px-5 py-2">
+                            <a [routerLink]="['/feedback']" class="custom-btn btn px-5 py-2">
 
                                 <span>Add Feedback</span>
 
@@ -125,30 +125,23 @@
 </section>
 
 
-<!-- 
-  <app-google-map></app-google-map> -->
 
+<div class="container-fluid row my-4">
+    <div class="row mx-5 px-5 my-3">
 
-<div class=" pt-5 pb-5">
-
-    <h1 class="text-center">Similar Camp Places </h1>
-
-    <div class="container-fluid row my-4">
-        <div class="row mx-5 px-5 my-3">
-
-            <div class="col-lg-3 col-md-6" *ngFor="let camp of campPlaces">
-                <app-camp-place-card [campPlace]="camp"> </app-camp-place-card>
-
-            </div>
-        </div>
-
-
-        <div class="abt-btn my-4 text-center">
-
-            <a routerLink="/listCampPlace" class="custom-btn btn px-5 py-2">
-
-                <span>View More</span>
-
-            </a>
+        <div class="col-lg-3 col-md-6" *ngFor="let camp of campPlaces">
+            <app-camp-place-card [campPlace]="camp"> </app-camp-place-card>
 
         </div>
+    </div>
+
+
+    <div class="abt-btn my-4 text-center">
+
+        <a routerLink="/listCampPlace" class="custom-btn btn px-5 py-2">
+
+            <span>View More</span>
+
+        </a>
+
+    </div>

@@ -1,22 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">TunisiaCamp</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarColor03"
-      aria-controls="navbarColor03"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+      aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor03">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/"
-            >Home
+          <a class="nav-link active" routerLink="/">Home
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
@@ -34,40 +26,25 @@
         </li>
 
         <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/user/management"
-            *ngIf="isLoggedIn() && isAdmin"
-            >User Management</a
-          >
+          <a class="nav-link" routerLink="/user/management" *ngIf="isLoggedIn() && isAdmin">User Management</a>
         </li>
       </ul>
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/EventTable" *ngIf="isLoggedIn()"
-            >My Events</a
-          >
+          <a class="nav-link" routerLink="/EventTable" *ngIf="isLoggedIn()">My Events</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/listCampPlace" *ngIf="isLoggedIn()"
-            >My Camp Places</a
-          >
+          <a class="nav-link" routerLink="/CampPlaceTable" *ngIf="isLoggedIn()">My Camp Places</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/productTable" *ngIf="isLoggedIn()"
-            >My Products</a
-          >
+          <a class="nav-link" routerLink="/productTable" *ngIf="isLoggedIn()">My Products</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/feddbackList" *ngIf="isLoggedIn()"
-            >Feedbacks</a
-          >
+          <a class="nav-link" routerLink="/feedbacklist" *ngIf="isLoggedIn()">Feedbacks</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/reservationList" *ngIf="isLoggedIn()"
-            >Reservations</a
-          >
+          <a class="nav-link" routerLink="/reservationList" *ngIf="isLoggedIn()">Reservations</a>
         </li>
       </ul>
 

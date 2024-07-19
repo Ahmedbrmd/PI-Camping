@@ -35,11 +35,8 @@ export class UserComponent implements OnInit, OnDestroy {
     private userService: UserService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
-    const user = this.authenticationService.getUserFromLocalCache();
-    if (user !== null) {
-      this.user = user;
-      this.getUsers(true);
-    }
+    this.getUsers(true)
+
   }
 
   public changeTitle(title: string): void {

@@ -70,7 +70,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="ui-card mx-2 px-2" *ngFor="let camp of campPlaces.slice(0, 2)">
                     <a [routerLink]="['/CampPlaceDetails', camp.idCampPlace]">
-                        <img [src]="'data:image/jpeg;base64,' + camp.images[0].image" />
+                        <img [src]="'data:image/jpeg;base64,' + camp.image" />
                         <div class="description">
                             <h4>{{ camp.name }}</h4>
                             <p>{{ camp.state }}</p>
@@ -81,7 +81,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="third-card ui-card mx-2 px-2">
                     <a [routerLink]="['/CampPlaceDetails', campPlaces[2].idCampPlace]">
-                        <img [src]="'data:image/jpeg;base64,' + campPlaces[2].images[0].image" />
+                        <img [src]="'data:image/jpeg;base64,' + campPlaces[2].image" />
                         <div class="description">
                             <h4>{{ campPlaces[2].name }}</h4>
                             <p>{{ campPlaces[2].state }}</p>
@@ -92,7 +92,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="ui-card mx-2 px-2" *ngFor="let camp of campPlaces.slice(3, 5)">
                     <a [routerLink]="['/CampPlaceDetails', camp.idCampPlace]">
-                        <img [src]="'data:image/jpeg;base64,' + camp.images[0].image" />
+                        <img [src]="'data:image/jpeg;base64,' + camp.image" />
                         <div class="description">
                             <h4>{{ camp.name }}</h4>
                             <p>{{ camp.state }}</p>
@@ -104,103 +104,10 @@
     </div>
 </section>
 
-<!-- New Equipement Section-->
-<!-- <section class="bg-color" id="new-equipement">
-    <div class="containers">
-        <div class="title">
-            <p>The New Equipement in TunisCamp</p>
-            <h2><span>New</span> Equipment</h2>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6" *ngFor="let product of products">
-                <app-product-card [product]="product"></app-product-card>
-            </div>
-        </div>
-    </div>
-</section> -->
 
-<!-- Services Section-->
-
-<section class="service">
-    <div class="containers text-center">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="service-card">
-                    <div class="round">
-                        <div class="round-icon">
-                            <i class="bi bi-compass-fill"></i>
-                        </div>
-                    </div>
-                    <h2>{{ campPlacesCount }}+</h2>
-                    <p>Attractive Location</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="service-card">
-                    <div class="round">
-                        <div class="round-icon">
-                            <i class="bi bi-fire"></i>
-                        </div>
-                    </div>
-                    <h2>{{ eventsCount }}+</h2>
-                    <p>Exciting Events</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="service-card">
-                    <div class="round">
-                        <div class="round-icon">
-                            <i class="bi bi-bag-heart-fill"></i>
-                        </div>
-                    </div>
-                    <h2>{{ productsCount }}+</h2>
-                    <p>Quality Equipements</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!--Event section-->
-<!-- <section class="event-container">
-    <div class="containers">
-        <div class="bg-position">
-            <owl-carousel-o [options]="eventOptions">
-                <ng-template carouselSlide *ngFor="let event of events">
-                    <app-event-card [event]="event" [isHomeComponent]="true"></app-event-card>
-                </ng-template>
-            </owl-carousel-o>
-            <div class="abt-btn my-4 text-center">
-                <a routerLink="EventList" class="custom-btn btn px-5 py-2">
-                    <span>View More</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-<!---->
 <div class="bg-container2 mt-5">
     <div class="px-5">
         <h1>Create Lasting Memories with Customized</h1>
         <h1>Camping Tours</h1>
-        <p>Our Partners Can Craft Your Tours with Genuine Expertise</p>
     </div>
 </div>
-
-<!--partners section-->
-<section class="bg-color">
-    <div class="containers">
-        <div class="title">
-            <p>We are working with the</p>
-            <h2><span>Best</span> Partners</h2>
-        </div>
-        <owl-carousel-o [options]="PartnersOptions">
-            <ng-container *ngFor="let slide of partnerLogos">
-                <ng-template carouselSlide [id]="slide">
-                    <img [src]="slide" [alt]="slide" [title]="slide" style="margin-left: 20px; width: 155px" />
-                </ng-template>
-            </ng-container>
-        </owl-carousel-o>
-    </div>
-</section>
