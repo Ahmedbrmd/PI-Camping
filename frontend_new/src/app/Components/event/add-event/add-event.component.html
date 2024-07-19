@@ -4,85 +4,85 @@
     </div>
   
     <div class="card mx-5">
-      <div class="card-body">
-        <form [formGroup]="eventForm" (ngSubmit)="upsertEvent()">
-          <div class="container-fluid row mt-2">
-            <div class="col-lg-6 col-md-12 p-5 container-left-side">
-              <div class="form-group mb-3">
-                <label for="campSelect" class="form-label">CampPlace</label>
-                <select class="form-select" id="campSelect" formControlName="idCampPlace">
-                  <option value="" selected disabled>Select Camp Place</option>
-                  <option *ngFor="let camp of campPlaces" [value]="camp.idCampPlace">{{ camp.name }}</option>
-                </select>
-              </div>
-    
-              <div class="form-group mb-3">
-                <label for="categorySelect" class="form-label">Category</label>
-                <select class="form-select" id="categorySelect" formControlName="category">
-                  <option value="" selected disabled>Select a category</option>
-                  <option *ngFor="let category of categories" [value]="category">{{ formatCategoryName(category) }}</option>
-                </select>
-              </div>
-    
-              <div class="form-group mb-3">
-                <label for="startDate">Start Date</label>
-                <input type="date" class="form-control" id="startDate" formControlName="startDate">
-              </div>
-    
-              <div class="form-group mb-3">
-                <label for="endDate">End Date</label>
-                <input type="date" class="form-control" id="endDate" formControlName="endDate">
-              </div>
-            </div>
-    
-            <div class="col-lg-6 col-md-12 p-5">
-              <div class="form-group mb-3">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" formControlName="name">
-                <div *ngIf="eventForm.get('name')?.invalid && (eventForm.get('name')?.touched || eventForm.get('name')?.dirty)" class="invalid-feedback">
-                  <div *ngIf="eventForm.get('name')?.errors?.['required']">Event Name is required.</div>
-                  <div *ngIf="eventForm.get('name')?.errors?.['minlength']">Event Name is too short.</div>
-                </div>
-              </div>
-    
-              <div class="form-group mb-3">
-                <label for="description">Description</label>
-                <textarea rows="5" class="form-control" id="description" formControlName="description"></textarea>
-                <div *ngIf="eventForm.get('description')?.invalid && (eventForm.get('description')?.touched || eventForm.get('description')?.dirty)" class="invalid-feedback">
-                  <div *ngIf="eventForm.get('description')?.errors?.['required']">Event Description is required.</div>
-                  <div *ngIf="eventForm.get('description')?.errors?.['minlength']">Event Description is too short.</div>
-                </div>
-              </div>
-    
-              <div class="form-group mb-3">
-                <label for="price">Event Price</label>
-                <div class="input-group">
-                  <span class="input-group-text">$</span>
-                  <input type="number" class="form-control" id="price" formControlName="price">
-                </div>
-                <div *ngIf="eventForm.get('price')?.invalid && (eventForm.get('price')?.touched || eventForm.get('price')?.dirty)" class="invalid-feedback">
-                  <div *ngIf="eventForm.get('price')?.errors?.['required']">Event Price is required.</div>
-                  <div *ngIf="eventForm.get('price')?.errors?.['min']">Event Price must be at least $1.</div>
-                </div>
-              </div>
-    
-              <div class="form-group mb-3">
-                <label for="nbParticipant">Number of Participants</label>
-                <input type="number" class="form-control" id="nbParticipant" formControlName="nbParticipant">
-                <div *ngIf="eventForm.get('nbParticipant')?.invalid && (eventForm.get('nbParticipant')?.touched || eventForm.get('nbParticipant')?.dirty)" class="invalid-feedback">
-                  <div *ngIf="eventForm.get('nbParticipant')?.errors?.['required']">Number of Participants is required.</div>
-                  <div *ngIf="eventForm.get('nbParticipant')?.errors?.['min']">Number of Participants must be at least 1.</div>
-                </div>
-              </div>
-    
-              <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">Add Event</button>
-              </div>
+  <div class="card-body">
+    <form [formGroup]="eventForm" (ngSubmit)="upsertEvent()">
+      <div class="container-fluid row mt-2">
+        <div class="col-lg-6 col-md-12 p-5 container-left-side">
+          <div class="form-group mb-3">
+            <label for="campSelect" class="form-label">CampPlace</label>
+            <select class="form-select" id="campSelect" formControlName="idCampPlace">
+              <option value="" selected disabled>Select Camp Place</option>
+              <option *ngFor="let camp of campPlaces" [value]="camp.idCampPlace">{{ camp.name }}</option>
+            </select>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="categorySelect" class="form-label">Category</label>
+            <select class="form-select" id="categorySelect" formControlName="category">
+              <option value="" selected disabled>Select a category</option>
+              <option *ngFor="let category of categories" [value]="category">{{ formatCategoryName(category) }}</option>
+            </select>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="startDate">Start Date</label>
+            <input type="date" class="form-control" id="startDate" formControlName="startDate">
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="endDate">End Date</label>
+            <input type="date" class="form-control" id="endDate" formControlName="endDate">
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12 p-5">
+          <div class="form-group mb-3">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+            <div *ngIf="eventForm.get('name')?.invalid && (eventForm.get('name')?.touched || eventForm.get('name')?.dirty)" class="invalid-feedback">
+              <div *ngIf="eventForm.get('name')?.errors?.['required']">Event Name is required.</div>
+              <div *ngIf="eventForm.get('name')?.errors?.['minlength']">Event Name is too short.</div>
             </div>
           </div>
-        </form>
+
+          <div class="form-group mb-3">
+            <label for="description">Description</label>
+            <textarea rows="5" class="form-control" id="description" formControlName="description"></textarea>
+            <div *ngIf="eventForm.get('description')?.invalid && (eventForm.get('description')?.touched || eventForm.get('description')?.dirty)" class="invalid-feedback">
+              <div *ngIf="eventForm.get('description')?.errors?.['required']">Event Description is required.</div>
+              <div *ngIf="eventForm.get('description')?.errors?.['minlength']">Event Description is too short.</div>
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="price">Event Price</label>
+            <div class="input-group">
+              <span class="input-group-text">$</span>
+              <input type="number" class="form-control" id="price" formControlName="price">
+            </div>
+            <div *ngIf="eventForm.get('price')?.invalid && (eventForm.get('price')?.touched || eventForm.get('price')?.dirty)" class="invalid-feedback">
+              <div *ngIf="eventForm.get('price')?.errors?.['required']">Event Price is required.</div>
+              <div *ngIf="eventForm.get('price')?.errors?.['min']">Event Price must be at least $1.</div>
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="nbParticipant">Number of Participants</label>
+            <input type="number" class="form-control" id="nbParticipant" formControlName="nbParticipant">
+            <div *ngIf="eventForm.get('nbParticipant')?.invalid && (eventForm.get('nbParticipant')?.touched || eventForm.get('nbParticipant')?.dirty)" class="invalid-feedback">
+              <div *ngIf="eventForm.get('nbParticipant')?.errors?.['required']">Number of Participants is required.</div>
+              <div *ngIf="eventForm.get('nbParticipant')?.errors?.['min']">Number of Participants must be at least 1.</div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary" >Add Event</button>
+          </div>
+        </div>
       </div>
-    </div>
+    </form>
+  </div>
+</div>
        
 </div>
    

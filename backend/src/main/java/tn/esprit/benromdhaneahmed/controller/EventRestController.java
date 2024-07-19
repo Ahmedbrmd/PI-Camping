@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.benromdhaneahmed.entities.CampPlace;
 import tn.esprit.benromdhaneahmed.entities.DTO.EventDto;
@@ -46,9 +47,16 @@ public class EventRestController {
         iEventService.deleteEvent(id);
     }
 
+//@PostMapping("/updateEvent")
+//    public Event update(@RequestBody Event event){
+//        return iEventService.updateEvent(event);
+//    }
 
-    public void update(@RequestBody Event event){
-        iEventService.updateEvent(event);
+
+    @PostMapping("/updateEvent")
+    public ResponseEntity<Event> updateEvent(@RequestBody Event event) {
+        Event updatedEvent = iEventService.updateEvent(event);
+        return ResponseEntity.ok(updatedEvent);
     }
 
 /*
@@ -108,5 +116,8 @@ public class EventRestController {
     public long getEventsCount(){
         return this.iEventService.eventCount();
     }
-
+    @GetMapping("/getEvenById/{eventId}")
+    public Event getEventByID(@PathVariable int eventId){
+        return iEventService.getEventById(eventId);
+    }
 }

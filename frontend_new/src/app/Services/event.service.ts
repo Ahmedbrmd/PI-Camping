@@ -14,6 +14,7 @@ import { RelevantEvent } from '../Models/dto/RelevantEventDto';
 export class EventService {
 
   apiurl = "http://localhost:8084/camping/";
+  //private baseUrl = 'http://localhost:8084/camping"';
 
   constructor(private httpClient: HttpClient){}
 
@@ -25,13 +26,12 @@ console.log(event);
    return  this.httpClient.post(this.apiurl + 'event'+'/addevent', event) ;
 
   }
+ 
+  updateEvent(event: Event): Observable<Event> {
+   console
+    return this.httpClient.post<Event>(`${this.apiurl}event/updateEvent`, event);
 
-  updateEvent(event: Event, file:File) {
-    let headers = new HttpHeaders();
-    headers = headers.set('Content-Type', 'multipart/form-data');
-
-   return  this.httpClient.put(this.apiurl + 'event', this.convertEventToFormData(event,file)) ;
-
+    
   }
 
   
@@ -40,7 +40,7 @@ console.log(event);
     }
 
   getEventById(id: any){
-    return this.httpClient.get<Event>(this.apiurl+'event/'+id);
+    return this.httpClient.get<Event>(this.apiurl+'event/getEvenById/'+id);
   }
 
   getFilteredEvents(eventFilterDto: EventFilterDto, page: number, size: number): Observable<Page<Event>> {

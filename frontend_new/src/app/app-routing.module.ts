@@ -23,6 +23,7 @@ import { AddEventComponent } from './Components/event/add-event/add-event.compon
 import { EventCardComponent } from './Components/event/event-card/event-card.component';
 import { EventDetailsComponent } from './Components/event/event-details/event-details.component';
 import { EventTableComponent } from './Components/event/event-table/event-table.component';
+import { EditEventComponent } from './Components/event/edit-event/edit-event.component';
 
 
 
@@ -48,6 +49,7 @@ const routes: Routes = [
   { path: "EventTable", component: EventTableComponent },
   { path: "CampPlaceTable", component: CampPlaceTableComponent },
   { path: "productTable", component: ProductTableComponent },
+  { path: 'edit-event/:id', component: EditEventComponent },
 
 
 

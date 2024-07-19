@@ -40,6 +40,8 @@ import { AddEventComponent } from './Components/event/add-event/add-event.compon
 import { EventCardComponent } from './Components/event/event-card/event-card.component';
 import { EventDetailsComponent } from './Components/event/event-details/event-details.component';
 import { EventTableComponent } from './Components/event/event-table/event-table.component';
+import { ActivatedRoute } from '@angular/router';
+import { EditEventComponent } from './Components/event/edit-event/edit-event.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,8 @@ import { EventTableComponent } from './Components/event/event-table/event-table.
     EventCardComponent,
     EventDetailsComponent,
     EventTableComponent,
-    AddProductComponent
+    AddProductComponent,
+    EditEventComponent
   ],
 
   imports: [
@@ -85,7 +88,7 @@ import { EventTableComponent } from './Components/event/event-table/event-table.
     MatTableModule,
     NotificationModule,
     ReactiveFormsModule,
-  
+    
     ToastrModule.forRoot(),
   ],
   providers: [

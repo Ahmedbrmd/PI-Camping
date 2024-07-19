@@ -8,13 +8,13 @@ import java.util.List;
 
 public interface IEventService {
     List<Event> getAllEvents();
-    Object getEventeById (int id);
+
 
     Event addEvent (Event event);
-    void updateEvent(Event event);
+    public Event updateEvent (Event event);
     void deleteEvent(int id);
     List<EventCategory> getCategories();
-
+    public Event getEventById(int eventId);
     List<Event> getRelevantEvent(EventCategory category);
     List<Event> getEventsByCampPlace(Integer campPlaceId);
 

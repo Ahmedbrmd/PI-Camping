@@ -8,56 +8,61 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
-  event:any;
-  relevantEvents :any;
-  images : string[]=[
+  event: any;
+  relevantEvents: any;
+  images: string[] = [
     "assets/zaghouan.jpg",
     "assets/bg3.jpg",
     "assets/tbarka.jpg",
     "assets/camp2.jpg"
   ];
-  features : Feature[]=[]
- 
+  features: Feature[] = [];
 
-  constructor(private eventService: EventService,private route: ActivatedRoute) { }
+  constructor(private eventService: EventService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = params.get('idEvent');
       this.eventService.getEventById(id).subscribe(
-        reponse =>{
-          console.log(reponse);
-
-         this.event = reponse;
+        response => {
+          console.log(response);
+          this.event = response;
         },
-        error=>{
-          console.log("error "+error.message);
+        error => {
+          console.log("Error fetching event details: " + error.message);
         }
       );
-      this.eventService.getRelevantEvent(this.event.category).subscribe(
-        reponse =>{
-          console.log(reponse);
-
-         this.relevantEvents = reponse;
-        },
-        error=>{
-          console.log("error "+error.message);
-        }
-      );
+      if (this.event) {
+        this.eventService.getRelevantEvent(this.event.category).subscribe(
+          response => {
+            console.log(response);
+            this.relevantEvents = response;
+          },
+          error => {
+            console.log("Error fetching relevant events: " + error.message);
+          }
+        );
+      }
     });
-
-
   }
+
   formatCategoryName(category: string): string {
-    const formatedCategory = category.toLowerCase().replaceAll('_'," ");
-    return formatedCategory;
+    return category.toLowerCase().replaceAll('_', " ");
   }
 
+  reservePlace(): void {
+    // Code pour gérer la réservation
+    if (this.event.nbParticipant > 0) {
+      this.event.nbParticipant--; // Diminue le nombre de participants
+      // Vous pouvez ici appeler un service pour effectuer la réservation côté serveur si nécessaire
+      console.log('Booking now...');
+    } else {
+      console.log('No available places left');
+      // Vous pouvez ajouter une notification ou un message d'erreur ici si nécessaire
+    }
+  }
 }
 
-class Feature{
-  constructor(public type :string, public description: string , public icon :string){
-
-  }
-
+class Feature {
+  constructor(public type: string, public description: string, public icon: string) { }
 }

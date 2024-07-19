@@ -1,0 +1,53 @@
+<div class="container">
+    <h2>Edit Event</h2>
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" formControlName="description"></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="startDate">Start Date:</label>
+        <input type="date" class="form-control" id="startDate" formControlName="startDate">
+      </div>
+  
+      <div class="form-group">
+        <label for="endDate">End Date:</label>
+        <input type="date" class="form-control" id="endDate" formControlName="endDate">
+      </div>
+  
+      <div class="form-group">
+        <label for="nbParticipant">Number of Participants:</label>
+        <input type="number" class="form-control" id="nbParticipant" formControlName="nbParticipant">
+      </div>
+  
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" class="form-control" id="price" formControlName="price">
+      </div>
+  
+      <div class="form-group">
+        <label for="category">Category:</label>
+        <input type="text" class="form-control" id="category" formControlName="category">
+      </div>
+  
+      <div class="form-group">
+        <label for="imageUrl">Static Image URL:</label>
+        <input type="text" class="form-control" id="imageUrl" formControlName="imageUrl">
+      </div>
+  
+      <!-- Optional fields -->
+      <div class="form-group">
+        <label for="idCampPlace">Camp Place ID:</label>
+        <input type="number" class="form-control" id="idCampPlace" formControlName="idCampPlace">
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Update Event</button>
+    </form>
+  </div>
+  

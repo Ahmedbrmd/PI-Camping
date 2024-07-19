@@ -25,8 +25,11 @@ public class Event {
     private Date endDate ;
     private  int nbParticipant;
     private double price;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Image> images;
+    @Column(name = "image_url") // New field for static image URL
+    private String imageUrl;
+
+
+
 
 
     @Enumerated(EnumType.STRING)

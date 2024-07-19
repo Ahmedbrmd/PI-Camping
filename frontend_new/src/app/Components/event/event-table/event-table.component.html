@@ -37,7 +37,7 @@
       <ng-container matColumnDef="Edit">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <button class="btn btn-danger" >Edit</button>
+            <button class="btn btn-warning" [routerLink]="['/edit-event', element.idEvent]">Edit</button>
         </td>
       </ng-container>
       

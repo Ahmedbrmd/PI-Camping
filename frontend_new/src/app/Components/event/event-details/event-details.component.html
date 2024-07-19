@@ -1,135 +1,99 @@
-
-
-
 <div class="background-container">
-    <!--title & description container-->
-  <div class="details-container">
-          <img [src]="'data:image/jpeg;base64,' + event.image" width="100%" class="img-fluid" alt="Full-width image">
-          <div class="big-container">
+    <!-- Title & Description Container -->
+    <div class="details-container">
+        <img [src]="'data:image/jpeg;base64,' + event.image" width="100%" class="img-fluid" alt="Full-width image">
+        <div class="big-container">
             <div class="title-container">
-              <h1>{{event.name}}</h1>
-              <p><i class="bi bi-star"></i>4.8(1.2k Reviews)</p>
+                <h1>{{ event.name }}</h1>
+                <p><i class="bi bi-star"></i>4.8(1.2k Reviews)</p>
             </div>
             <div class="description-container">
-              <div class="d-flex justify-content-between mx-3 mt-4 price-container">
-                <div class="text-left">
-                  <p>
-                    <span class="price-text">{{event.price}}DT</span>/Per Person
-                  </p>
+                <div class="d-flex justify-content-between mx-3 mt-4 price-container">
+                    <div class="text-left">
+                        <p>
+                            <span class="price-text">{{ event.price }}DT</span>/Per Person
+                        </p>
+                    </div>
+                    <div class="text-right">
+                        <button (click)="reservePlace()" class="btn btn-primary">Book Now</button>
+                    </div>
                 </div>
-                <div class="text-right">
-                  <h6>{{ event.startDate  | date: 'yyyy-MM-dd' }}</h6>
-                  <button [routerLink]="['/reservation/',event.idEvent]" class="btn btn-primary">Book Now</button>
+                <div class="mx-4 mb-2">
+                    <hr>
+                    <h3 class="my-3">Destination Overview</h3>
+                    <p>{{ event.description }}</p>
                 </div>
-              </div>
-              <div class="mx-4 mb-2">
-                <hr>
-                <h3 class="my-3">Destination Overview</h3>
-                <p>{{event.description}}</p>
-              </div>
-  
             </div>
-          </div>
-  </div>
-  
-  
-    <!--Camping Plan container-->
-  
-  <h1 class="text-center pb-4">Camping Plan  </h1>
-  
-  <div class="feature-table">
-    <table class="table" >
-      <tbody>
-        <tr>
-          <td class="p-3 bi bi-tag" width="20%"><i class="feature-icon" ></i>Category</td>
-          <td class="p-3" width="30%">{{formatCategoryName(event.category)}}</td>
-        </tr>
-        <tr>
-          <td class="p-3 bi bi-pin-map" width="20%"><i class="feature-icon" ></i>CampPlace</td>
-          <td class="p-3" width="30%">{{event.campPlace.name}}</td>
-        </tr>
-        <tr>
-          <td class="p-3 bi bi-person-dash" width="20%"><i class="feature-icon" ></i>Age</td>
-          <td class="p-3" width="30%">+13</td>
-        </tr>
-        <tr>
-          <td class="p-3 bi bi-people-fill" width="20%"><i class="feature-icon" ></i>Number of available places</td>
-          <td class="p-3" width="30%">{{event.nbParticipant}}</td>
-        </tr>
-        <tr>
-          <td class="p-3 bi bi-calendar-heart" width="20%"><i class="feature-icon" ></i>Start Date</td>
-          <td class="p-3" width="30%">{{ event.startDate  | date: 'yyyy-MM-dd' }}</td>
-        </tr>
-        <tr>
-          <td class="p-3 bi bi-calendar-heart" width="20%"><i class="feature-icon" ></i>End Date</td>
-          <td class="p-3" width="30%">{{ event.endDate  | date: 'yyyy-MM-dd' }}</td>
-        </tr>
-        <tr>
-          <td class="p-3 bi bi-coin" width="20%"><i class="feature-icon" ></i>Price</td>
-          <td class="p-3" width="30%">{{event.price}}Dt</td>
-        </tr>
-      </tbody>
-    </table>
+        </div>
     </div>
-  
-   
-    <!--features container-->
-  
-  <div class="features-container text-justify pt-5">
-    <div class="row col-12 text-center d-flex justify-content-center pb-5 ">
-      <div  class="col-lg-3 col-md-6 mx-3">
-        <img src="assets/location.svg">
-        <h4>Discover the world</h4>
-        <p class="px-2">Uncover new horizons and immerse yourself in the wonders of nature as you explore diverse landscapes and embark on thrilling adventures</p>
-      </div>
-      <div  class="col-lg-3 col-md-6 mx-3">
-        <img src="assets/security.svg">
-        <h4>Security</h4>
-        <p  class="text-justify px-2">Your safety is our top priority. With well-maintained grounds, reliable security measures, and attentive staff, you can enjoy peace of mind throughout your camping adventure</p>
-  
-      </div>
-      <div  class="col-lg-3 col-md-6 mx-3 ">
-        <img src="assets/enjoy.svg">
-        <h4>Enjoying</h4>
-        <p class="text-justify px-2">Indulge in moments of pure joy and relaxation as you create lasting memories with family and friends, savoring the beauty of nature and the bliss of outdoor activities</p>
-  
-      </div>
-    </div>
-  </div>
-  
-     <!--Google maps container-->
-  
-  <div class="features-container text-center pt-5 pb-3">
-    <h1>View On Map</h1>
-    <p>
-      Discover our camping paradise nestled in a serene location, surrounded by nature's wonders.
-      Explore the beauty and tranquility of our campsite on the Google Map below.
-    </p>
-  
-   </div>
 
-  
-     <!--Relevant Camping container-->
-  
-  
-    <!--Discover more container-->
-  
-  <div class="bg-container d-flex flex-column justify-content-center text-center">
-    <div class="animate__animated animate__zoomIn">
-    <h1>Ready to Camp with Us</h1>
-    <h1>On Your Next Camp?</h1>
-    <button routerLink="" class="btn btn-primary text-center mt-4 py-2 px-5">Discover More</button>
-  </div>
-  </div>
-  
-  
-  </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
+    <!-- Camping Plan Container -->
+    <h1 class="text-center pb-4">Camping Plan</h1>
+
+    <div class="feature-table">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td class="p-3 bi bi-tag" width="20%"><i class="feature-icon"></i>Category</td>
+                    <td class="p-3" width="30%">{{ formatCategoryName(event.category) }}</td>
+                </tr>
+                <tr>
+                    <td class="p-3 bi bi-person-dash" width="20%"><i class="feature-icon"></i>Age</td>
+                    <td class="p-3" width="30%">+13</td>
+                </tr>
+                <tr>
+                    <td class="p-3 bi bi-people-fill" width="20%"><i class="feature-icon"></i>Number of available places</td>
+                    <td class="p-3" width="30%">{{ event.nbParticipant }}</td>
+                </tr>
+                <tr>
+                    <td class="p-3 bi bi-calendar-heart" width="20%"><i class="feature-icon"></i>Start Date</td>
+                    <td class="p-3" width="30%">{{ event.startDate | date: 'yyyy-MM-dd' }}</td>
+                </tr>
+                <tr>
+                    <td class="p-3 bi bi-calendar-heart" width="20%"><i class="feature-icon"></i>End Date</td>
+                    <td class="p-3" width="30%">{{ event.endDate | date: 'yyyy-MM-dd' }}</td>
+                </tr>
+                <tr>
+                    <td class="p-3 bi bi-coin" width="20%"><i class="feature-icon"></i>Price</td>
+                    <td class="p-3" width="30%">{{ event.price }}Dt</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Features Container -->
+    <div class="features-container text-justify pt-5">
+        <div class="row col-12 text-center d-flex justify-content-center pb-5 ">
+            <div class="col-lg-3 col-md-6 mx-3">
+                <img src="assets/location.svg">
+                <h4>Discover the world</h4>
+                <p class="px-2">Uncover new horizons and immerse yourself in the wonders of nature as you explore diverse landscapes and embark on thrilling adventures</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mx-3">
+                <img src="assets/security.svg">
+                <h4>Security</h4>
+                <p class="text-justify px-2">Your safety is our top priority. With well-maintained grounds, reliable security measures, and attentive staff, you can enjoy peace of mind throughout your camping adventure</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mx-3 ">
+                <img src="assets/enjoy.svg">
+                <h4>Enjoying</h4>
+                <p class="text-justify px-2">Indulge in moments of pure joy and relaxation as you create lasting memories with family and friends, savoring the beauty of nature and the bliss of outdoor activities</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Google Maps Container -->
+    <div class="features-container text-center pt-5 pb-3">
+        <h1>View On Map</h1>
+        <p>Discover our camping paradise nestled in a serene location, surrounded by nature's wonders. Explore the beauty and tranquility of our campsite on the Google Map below.</p>
+    </div>
+
+    <!-- Discover more container -->
+    <div class="bg-container d-flex flex-column justify-content-center text-center">
+        <div class="animate__animated animate__zoomIn">
+            <h1>Ready to Camp with Us</h1>
+            <h1>On Your Next Camp?</h1>
+            <button routerLink="" class="btn btn-primary text-center mt-4 py-2 px-5">Discover More</button>
+        </div>
+    </div>
+</div>
