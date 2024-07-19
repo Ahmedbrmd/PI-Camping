@@ -14,7 +14,7 @@ public interface IProduct {
     void deleteProduct(int id);
 
 
-
+    Product getProductById(int id);
 }
 
 

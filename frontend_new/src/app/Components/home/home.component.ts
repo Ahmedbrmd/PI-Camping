@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
       }
     );
 
-    this.campPlaceService.getTop5CampPlace().subscribe(
+    this.campPlaceService.getAllCampPlace().subscribe(
       reponse => {
         console.log(reponse);
 

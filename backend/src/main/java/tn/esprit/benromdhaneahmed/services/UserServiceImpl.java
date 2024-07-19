@@ -130,4 +130,11 @@ public class UserServiceImpl implements IUserService {
         int number = random.nextInt(1000);
         return basePassword + number + passwordSuffix;
     }
+
+    @Override
+    public List<User> getUsers() {
+
+        return userRepository.findAll();
+    }
+
 }

@@ -16,4 +16,6 @@ public interface IUserService {
     public Set<User> findByRole(UserRole role);
     public Optional<User> findByUsername(String userName);
     public User resetPassword(String email) throws MessagingException;
+
+    List<User> getUsers();
 }

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.benromdhaneahmed.entities.CampPlace;
 import tn.esprit.benromdhaneahmed.entities.CampPlaceCategory;
 import tn.esprit.benromdhaneahmed.entities.Product;
 import tn.esprit.benromdhaneahmed.entities.ProductCategory;
@@ -41,6 +42,10 @@ public class ProductController {
 
     }
 
+    @GetMapping("/{id}")
+    public Product get(@PathVariable int id){
+        return productService.getProductById(id);
+    }
 
 
     @GetMapping("/getProduct")

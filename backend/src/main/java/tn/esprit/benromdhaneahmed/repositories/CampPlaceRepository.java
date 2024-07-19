@@ -29,6 +29,7 @@ public interface CampPlaceRepository extends JpaRepository<CampPlace, Integer> {
             Pageable pageable);
     List<CampPlace> findTop5ByOrderByIdCampPlaceAsc();
 
+
     @Query("SELECT new tn.esprit.benromdhaneahmed.entities.DTO.CampPlaceSelectDto(c.idCampPlace, c.name) FROM CampPlace c")
     List<CampPlaceSelectDto> findAllCampPlaces();
     long count();

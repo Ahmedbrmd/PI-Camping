@@ -6,6 +6,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -110,4 +113,21 @@ public class CampPlaceController {
         String direction = sortParams[1];
         return Sort.by(Sort.Direction.fromString(direction), property);
     }
+
+    @GetMapping("/getTop5CampPlace")
+    public ResponseEntity<?> getTop5CampPlacesEndpoint() {
+        try {
+            List<CampPlace> campPlaces = campPlaceService.findTop5CampPlaces();
+            return ResponseEntity.ok(campPlaces);
+        } catch (JpaSystemException e) {
+            // Log the stack trace and return a meaningful error message
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error accessing LOB data.");
+        } catch (Exception e) {
+            // General exception handling
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred.");
+        }
+    }
+
 }
