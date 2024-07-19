@@ -1,0 +1,223 @@
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*background-image: url("assets/bg3.jpg");*/
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5; /* Adjust the opacity as desired */
+  z-index: -1;
+}
+.mat-mdc-row .mat-mdc-cell {
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+
+.button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  padding: 10px 24px;
+  font-size: 18px;
+  color: #ec930d;
+  border: 2px solid #ec930d;
+  border-radius: 34px;
+  background-color: transparent;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: #ec930d;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.button:hover {
+  background-color: #ec930d;
+  color: black;
+  border: 2px solid #ec930d;
+}
+
+.card {
+  margin-top: 100px;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.center-text {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.filters {
+  background-color: white;
+  height: 100%;
+}
+
+.filters .filters-clear {
+  font-size: 13px;
+  float: right;
+  line-height: 22px;
+}
+
+.mat-mdc-standard-chip.mat-accent.mat-mdc-chip-selected,
+.mat-mdc-standard-chip.mat-accent.mat-mdc-chip-highlighted {
+  --mdc-chip-elevated-container-color: #0dec67;
+}
+.event-container {
+  position: relative;
+}
+.events {
+  padding-right: 20px;
+}
+.pagination-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-secondary {
+  background-color: #fff;
+  color: #0d0d0d;
+  border-color: #0d0d0d;
+  width: 100px;
+  height: fit-content;
+}
+.btn-secondary:hover {
+  background-color: #0d0d0d;
+  color: #fff;
+  border-color: #0d0d0d;
+}
+
+.btn-primary {
+  background-color: #fff;
+  color: #0dec67;
+  border-color: #0dec67;
+  height: fit-content;
+  width: 100px;
+}
+.btn-primary:hover {
+  background-color: #0dec67;
+  border-color: #0dec67;
+  color: #fff;
+}
+.btn-outline-primary {
+  border: none;
+}
+.btn-outline-primary:hover {
+  background-color: #0d0d0d;
+  color: #fff;
+  border-color: #0d0d0d;
+}
+
+.search-input {
+  height: fit-content;
+}
+
+.selected-sort {
+  background-color: rgb(232, 229, 229);
+}
+
+.btn-add {
+  height: fit-content;
+  background-color: #0d0d0d;
+  color: #fff;
+  border-color: #0d0d0d;
+}
+.btn-add:hover {
+  background-color: #fff;
+  color: #0d0d0d;
+  border-color: #0d0d0d;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+
+/* Add your existing CSS here */
+
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}

@@ -1,0 +1,43 @@
+<div class="background-image"></div>
+
+<div class="card">
+  <div class="card-header">Feedback</div>
+
+  <div class="card-body">
+    <label for="customRange2"
+      >Would you please provide a rating
+      <strong>{{ getRatingLabel() }}</strong></label
+    ><br />
+    <input
+      [(ngModel)]="feedback.rating"
+      id="customRange2"
+      [max]="max"
+      [min]="min"
+      type="range"
+    />
+    <div class="inputbox">
+      <!-- Display the rating value -->
+      <p>Rating: {{ feedback.rating }}</p>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="form-floating">
+      <textarea
+        class="form-control"
+        [(ngModel)]="feedback.comment"
+        id="floatingTextarea"
+      ></textarea>
+      <label for="floatingTextarea" [ngClass]="{ active: commentControl.value }"
+        >Comments</label
+      >
+    </div>
+  </div>
+
+  <!-- Add more input fields and form elements here -->
+
+  <button class="button" (click)="submitFeedback()">Add</button>
+  <button class="button" (click)="navigateToFeedbackList()">
+    See Feedbacks
+  </button>
+</div>
