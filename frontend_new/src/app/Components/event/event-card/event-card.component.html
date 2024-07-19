@@ -1,0 +1,12 @@
+<div class="event-card" [ngClass]="{'event-card-home': isHomeComponent}">
+    <div class="date" [ngClass]="{'date-home': isHomeComponent}">
+      <h3>{{getFormatedDay(event.startDate)}}</h3>
+      <h4>{{getFormatedMonth(event.startDate)}}</h4>
+    </div>
+    <div class="event-img">
+      <img [src]="'data:image/jpeg;base64,' + event.image" alt="event.name">
+    </div>
+    <h2>{{event.name}}</h2>
+    <p>{{event.description.substring(0,170)}}</p>
+   <a  [routerLink]="['/EventDetails',event.idEvent]" class="read-more">Read More<i class="fa fa-caret-right"></i></a>
+  </div>

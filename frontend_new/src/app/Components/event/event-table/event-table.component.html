@@ -1,0 +1,101 @@
+<div class="m-3">
+
+
+  <div class="d-flex justify-content-between align-items-center pb-3 px-3">
+
+    <div class="d-flex mt-2 align-items-center">
+        <input (keyup.enter)="getFilteredEvents()" type="text" placeholder="Search" [(ngModel)]="eventFilter.searchTerm" class="search-input form-control me-2" #search>
+        <button (click)="getFilteredEvents()" class="btn btn-primary mx-2">Search</button>
+        <button (click)="onReset()" class="btn btn-secondary">Reset</button>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon >sort</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngFor="let sort of sortOptions" (click)="selectSortOption(sort.value)" [ngClass]="{'selected-sort' : sort.value==eventFilter.sort}">
+            <mat-icon>{{sort.icon}}</mat-icon>
+            <span>{{sort.name}}</span>
+          </button>
+        </mat-menu>
+    </div>
+    <div class="button-container">
+        <button routerLink="/AddEvent" class="btn btn-add">Add New Event</button>
+    </div>
+
+</div>
+
+
+
+
+  <table mat-table [dataSource]="eventList" class="mat-elevation-z8" >
+   
+      <ng-container matColumnDef="remove">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button class="btn btn-danger" (click)="deleteEvent(element)">Remove</button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Edit">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button class="btn btn-danger" >Edit</button>
+        </td>
+      </ng-container>
+      
+    <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element">{{element.idEvent}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element"><a  [routerLink]="['/EventDetails/'+element.idEvent]">{{element.name}}</a></td>
+    </ng-container>
+    
+   <!-- <ng-container matColumnDef="CampPlace">
+        <th mat-header-cell *matHeaderCellDef>Camp Place</th>
+        <td mat-cell *matCellDef="let element">{{element.campPlace.name}}</td>
+    </ng-container>-->
+    <ng-container matColumnDef="Category">
+      <th mat-header-cell *matHeaderCellDef>Category</th>
+      <td mat-cell *matCellDef="let element">{{formatCategoryName(element.category)}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>description</th>
+    <td mat-cell *matCellDef="let element">{{element.description | slice:0:40}}{{element.description.length > 40 ? '...' : ''}}</td>
+  </ng-container>
+
+
+<ng-container matColumnDef="StartDate">
+  <th mat-header-cell *matHeaderCellDef>Start Date</th>
+  <td mat-cell *matCellDef="let element">{{ element.startDate  | date: 'yyyy-MM-dd' }}</td>
+</ng-container>
+<ng-container matColumnDef="EndDate">
+  <th mat-header-cell *matHeaderCellDef>End Date</th>
+  <td mat-cell *matCellDef="let element">{{ element.endDate  | date: 'yyyy-MM-dd' }}</td>
+</ng-container>
+<ng-container matColumnDef="nbParticipant">
+  <th mat-header-cell *matHeaderCellDef>Participants</th>
+  <td mat-cell *matCellDef="let element">{{ element.nbParticipant}}</td>
+</ng-container>
+<ng-container matColumnDef="Price">
+  <th mat-header-cell *matHeaderCellDef>Price</th>
+  <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+</ng-container>
+
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <a [routerLink]="['/addEvent/'+element.idEvent]"><i class="bi bi-pencil-square fs-3"></i></a>
+        <a (click)="deleteEvent(element)"><i class="bi bi-trash-fill fs-3 ms-4"></i></a>
+      </td>
+  </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row;columns:displayedColumns;"></tr>
+
+  </table>
+  </div>
+
+
+

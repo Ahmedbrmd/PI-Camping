@@ -25,7 +25,8 @@ public class Event {
     private Date endDate ;
     private  int nbParticipant;
     private double price;
-    private String videoUrl ;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Image> images;
 
 
     @Enumerated(EnumType.STRING)
@@ -38,6 +39,5 @@ public class Event {
     @JsonIgnore
     private List<Reservation> reservations;
 
-    @Column(columnDefinition = "TEXT")
-    private String image;
+
 }

@@ -15,6 +15,8 @@ public class Image {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Setter(AccessLevel.NONE)
         private int id;
+        private String url;
+
         @Lob
         @Column(columnDefinition = "TEXT")
         private String image;
