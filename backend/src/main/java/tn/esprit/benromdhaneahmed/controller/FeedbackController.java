@@ -25,7 +25,7 @@ public class FeedbackController {
     }
 
 
-    @PutMapping("/updateFe/{idFeedback}")
+    @PutMapping("/{idFeedback}")
     public Feedback updateFe(@PathVariable int idFeedback, @RequestBody Feedback f) {
         f.setIdFeedback(idFeedback); // Set the ID from path variable in the feedback object
         return feedbackService.updateFeedback(f);

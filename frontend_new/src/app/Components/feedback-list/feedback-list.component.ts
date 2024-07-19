@@ -1,35 +1,36 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { FeedbackService } from '../../Services/feedback.service';
 import Swal from 'sweetalert2';
+import { FeedbackUpdateModalComponent } from '../feedback-update-modal/feedback-update-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-feedback-list',
   templateUrl: './feedback-list.component.html',
   styleUrls: ['./feedback-list.component.css'],
 })
-export class FeedbackListComponent {
-  displayedColumns: string[] = ['Id', 'rating', 'createAt', 'comment', 'edit'];
+export class FeedbackListComponent implements OnInit {
+  displayedColumns: string[] = ['rating', 'createAt', 'comment', 'edit'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   feedbacks: any;
-  selectedOptions: { [id: number]: boolean } = {};
 
   constructor(
     private router: Router,
-    private feedbackservice: FeedbackService
+    private feedbackService: FeedbackService,
+    private dialog: MatDialog
   ) {}
+
   ngOnInit(): void {
     this.getFeedbaks();
   }
 
   getFeedbaks() {
-    this.feedbackservice.getAll().subscribe(
+    this.feedbackService.getAll().subscribe(
       (response) => {
-        console.log(response);
-
         this.feedbacks = response;
       },
       (error) => {
@@ -38,17 +39,7 @@ export class FeedbackListComponent {
     );
   }
 
-  onReset() {
-    this.getFeedbaks();
-  }
-
-  navigateToDetails(element: any) {
-    // Assuming you have a details route defined in your routing configuration
-    this.router.navigate(['/ProductDetails/' + element.position]); // Replace 'details' with your actual details route path
-  }
-
   deleteFeedback(feedback: any) {
-    console.log('delete method');
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -59,11 +50,11 @@ export class FeedbackListComponent {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.feedbackservice.deleteFeedback(feedback.idFeedback).subscribe(
-          (reponse) => {
+        this.feedbackService.deleteFeedback(feedback.idFeedback).subscribe(
+          (response) => {
             Swal.fire(
               'Deleted!',
-              feedback.idFeedback + 'has been deleted.',
+              feedback.idFeedback + ' has been deleted.',
               'success'
             );
             this.getFeedbaks();
@@ -73,13 +64,27 @@ export class FeedbackListComponent {
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: 'Something went wrong! Unable to delete the product',
+              text: 'Something went wrong! Unable to delete the feedback',
             });
           }
         );
       }
     });
   }
+
+  openUpdateModal(feedback: any): void {
+    const dialogRef = this.dialog.open(FeedbackUpdateModalComponent, {
+      width: '600px',
+      data: { feedback },
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        this.getFeedbaks(); // Refresh the list if update was successful
+      }
+    });
+  }
+
   navigateToFeedbackList() {
     this.router.navigate(['/feedback']);
   }

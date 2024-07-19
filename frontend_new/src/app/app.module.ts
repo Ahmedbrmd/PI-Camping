@@ -5,7 +5,6 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
@@ -36,6 +35,11 @@ import { PagingHeaderComponent } from './Shared/paging-header/paging-header.comp
 import { NotificationModule } from './notification.module';
 import { FeedbackComponent } from './Components/feedback/feedback.component';
 import { FeedbackListComponent } from './Components/feedback-list/feedback-list.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FeedbackUpdateModalComponent } from './Components/feedback-update-modal/feedback-update-modal.component'; // Adjust path
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +60,7 @@ import { FeedbackListComponent } from './Components/feedback-list/feedback-list.
     PagingHeaderComponent,
     FeedbackComponent,
     FeedbackListComponent,
+    FeedbackUpdateModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,6 +79,9 @@ import { FeedbackListComponent } from './Components/feedback-list/feedback-list.
     NgbModule,
     MatTableModule,
     NotificationModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
     ToastrModule.forRoot(),
   ],
   providers: [NotificationService],
