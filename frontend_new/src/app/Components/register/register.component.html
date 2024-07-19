@@ -1,0 +1,115 @@
+<div class="container-fluid custom-style">
+    <div class="g-0 row align-items-stretch">
+      <div
+        class="col-md-6 col-sm-6 text-black d-flex flex-column justify-content-center"
+      >
+        <div class="px-5 ms-xl-4">
+          <div class="align-items-center justify-content-center">
+            <img
+              class="img-icon-style my-2"
+              src="../../../assets/images/Tunisia_Camp.png"
+            />
+          </div>
+          <div class="align-items-center justify-content-center">
+            <h3 class="fw-normal mb-3 pb-3">Create Account</h3>
+          </div>
+        </div>
+        <div
+          class="d-flex align-items-center justify-content-center ms-xl-4 mt-2 pt-3 pt-xl-0 mt-xl-n5"
+        >
+          <div>
+            <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm.value)">
+              <div class="align-items-center justify-content-center mb-3">
+                <span
+                  >Enter your personal details and start journey with us</span
+                >
+              </div>
+              <div class="form-floating form-group mb-3">
+                <i class="ico fa fa-user"></i>
+                <input
+                  type="text"
+                  class="form-input"
+                  placeholder="First name"
+                  name="firstName"
+                  ngModel
+                  #firstNameInput="ngModel"
+                  required
+                />
+              </div>
+              <span class="help-block" *ngIf="firstNameInput.invalid && firstNameInput.touched" style="color:red;">Please enter a first name</span>
+              <div class="form-floating form-group mb-3">
+                <i class="ico fa fa-user"></i>
+                <input
+                  type="text"
+                  class="form-input"
+                  placeholder="Last name"
+                  name="lastName"
+                  ngModel
+                  #lastNameInput="ngModel"
+                  required
+                />
+              </div>
+              <span class="help-block" *ngIf="lastNameInput.invalid && lastNameInput.touched" style="color:red;">Please enter a last name</span>
+              <div class="form-floating form-group mb-3">
+                <i class="ico fa fa-user"></i>
+                <input
+                  type="text"
+                  class="form-input"
+                  placeholder="Username"
+                  name="username"
+                  ngModel
+                  #usernameInput="ngModel"
+                  required
+                />
+              </div>
+              <span
+                class="help-block"
+                style="color: red"
+                *ngIf="usernameInput.invalid && usernameInput.touched"
+                >Please enter a username</span
+              >
+              <div class="form-floating form-group mb-3">
+                <i class="ico fa fa-envelope"></i>
+                <input
+                  type="text"
+                  class="form-input"
+                  placeholder="Email"
+                  name="email"
+                  ngModel
+                  #emailInput="ngModel"
+                  required
+                />
+              </div>
+              <span class="help-block" *ngIf="emailInput.invalid && emailInput.touched" style="color:red;">Please enter an email.</span>
+
+              <div
+                class="my-3 align-items-center justify-content-center space-vertically"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-block button-style"
+                  [disabled]="registerForm.invalid || showLoading"
+                  name="button"
+                >
+                <i *ngIf="showLoading" class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;
+                <span *ngIf="showLoading">Loading...</span>
+                <span *ngIf="!showLoading">Register</span>
+                </button>
+              </div>
+            </form>
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                Already have an account? <a routerLink="/login"  class="ml-2 ms-2" style="color: #2C3E50;">Log In</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-md-6 ps-0 pe-0 img-container-layout d-flex align-items-center"
+      >
+        <div class="img-wrapper mx-auto">
+          <img class="img-style" src="../../../assets/images/camplog.jpg" />
+        </div>
+      </div>
+    </div>
+  </div>
+

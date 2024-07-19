@@ -1,28 +1,43 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 import { User } from '../Models/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
-
+import { LoginRequest } from '../Models/dto/login';
+import { LoginResponse } from '../Models/dto/loginResponse';
+import { TokenRefreshRequest } from '../Models/dto/TokenRefreshRequest';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  public host = "http://localhost:8084/camping/";
+  public host = environment.apiUrl;
   private token: string = '';
   private loggedInUsername: string = '';
   private jwtHelper = new JwtHelperService();
 
   constructor(private http: HttpClient) { }
 
-  public login(user: User): Observable<HttpResponse<User>> {
-    return this.http.post<User>(`${this.host}/user/login`, user, { observe: 'response' });
+  public login(login: LoginRequest): Observable<HttpResponse<LoginResponse>> {
+    return this.http.post<LoginResponse>(`${this.host}/camping/auth/signin`, login, { observe: 'response' });
   }
 
   public register(user: User): Observable<User> {
-    return this.http.post<User>(`${this.host}/user/register`, user);
+    return this.http.post<User>(`${this.host}/camping/auth/signup`, user);
   }
+  public logOutFromDB(token: string): Observable<any> {
+    const body = { token };
+    return this.http.post<any>(`${this.host}/camping/auth/logout`, body);
+  }
+  refreshToken(tokenRefreshRequest: TokenRefreshRequest): Observable<any> {
+    return this.http.post<any>(`${this.host}/camping/auth/refreshtoken`, tokenRefreshRequest);
+  }
+  public resetPassword(email: string): Observable<any> {
+    return this.http.get<any>(`${this.host}/camping/auth/resetpassword/${email}`);
+  }
+
+
 
   public logOut(): void {
     this.token = '';
@@ -37,11 +52,11 @@ export class AuthenticationService {
     localStorage.setItem('token', token);
   }
 
-  public addUserToLocalCache(user: User): void {
+  public addUserToLocalCache(user: any): void {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
-  public getUserFromLocalCache(): User | null {
+  public getUserFromLocalCache(): any | null {
     const userString = localStorage.getItem('user');
     if (userString !== null) {
       return JSON.parse(userString);

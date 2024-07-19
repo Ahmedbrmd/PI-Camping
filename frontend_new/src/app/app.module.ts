@@ -39,7 +39,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FeedbackUpdateModalComponent } from './Components/feedback-update-modal/feedback-update-modal.component'; // Adjust path
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input'; import { EditUserComponent } from './Components/edit-user/edit-user.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { UserComponent } from './Components/user/user.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,10 +62,16 @@ import { MatInputModule } from '@angular/material/input';
     ProductTableComponent,
     FooterComponent,
     HeaderComponent,
+    EditUserComponent,
+    LoginComponent,
+    RegisterComponent,
+    UserComponent,
+    ResetPasswordComponent,
     PagingHeaderComponent,
     FeedbackComponent,
     FeedbackListComponent,
     FeedbackUpdateModalComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -87,4 +98,4 @@ import { MatInputModule } from '@angular/material/input';
   providers: [NotificationService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
