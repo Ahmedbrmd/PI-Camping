@@ -1,0 +1,23 @@
+.container{
+    min-height: 100%;
+}
+
+.btn-info{
+    border-radius: 0 !important;
+    background-color: #1B4D3E !important;
+    margin-right: 3px !important;
+    border: 0 transparent !important;
+    color: white !important;
+}
+
+.nav-item{
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    margin-right: 3px !important;
+    border: 0 transparent !important;
+    color: #1B4D3E !important;
+}
+
+.badge{
+    color: #1B4D3E !important;
+}

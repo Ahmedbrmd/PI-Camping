@@ -35,6 +35,11 @@ import { HeaderComponent } from './Shared/header/header.component';
 import { NotificationService } from './Services/notification.service';
 import { PagingHeaderComponent } from './Shared/paging-header/paging-header.component';
 import { NotificationModule } from './notification.module';
+import { EditUserComponent } from './Components/edit-user/edit-user.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { UserComponent } from './Components/user/user.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +58,13 @@ import { NotificationModule } from './notification.module';
     ProductTableComponent,
     FooterComponent,
     HeaderComponent,
+    EditUserComponent,
+    LoginComponent,
+    RegisterComponent,
+    UserComponent,
+    ResetPasswordComponent,
     PagingHeaderComponent
+
   ],
   imports: [
     BrowserModule,

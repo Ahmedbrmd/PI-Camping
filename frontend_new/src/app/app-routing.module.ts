@@ -18,6 +18,10 @@ import { ProductTableComponent } from './Components/product/product-table/produc
 
 import { CampPlaceTableComponent } from './Components/campPlace/camp-place-table/camp-place-table.component';
 import { HeaderComponent } from './Shared/header/header.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { UserComponent } from './Components/user/user.component';
+import { EditUserComponent } from './Components/edit-user/edit-user.component';
 
 
 
@@ -25,6 +29,11 @@ const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "home", component: HomeComponent },
   { path: "header", component: HeaderComponent },
+  
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'user/management', component: UserComponent},
+  { path: 'addUser', component: EditUserComponent},
 
 
 
