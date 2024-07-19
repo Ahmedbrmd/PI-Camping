@@ -32,15 +32,15 @@ export class UserComponent implements OnInit, OnDestroy {
   public fileStatus = new FileUploadStatus();
 
   constructor(private router: Router, private authenticationService: AuthenticationService,
-              private userService: UserService, private notificationService: NotificationService) {}
+    private userService: UserService, private notificationService: NotificationService) { }
 
-              ngOnInit(): void {
-                const user = this.authenticationService.getUserFromLocalCache();
-                if (user !== null) {
-                  this.user = user;
-                  this.getUsers(true);
-                }
-              }
+  ngOnInit(): void {
+    const user = this.authenticationService.getUserFromLocalCache();
+    if (user !== null) {
+      this.user = user;
+      this.getUsers(true);
+    }
+  }
 
   public changeTitle(title: string): void {
     this.titleSubject.next(title);
@@ -71,20 +71,20 @@ export class UserComponent implements OnInit, OnDestroy {
     this.selectedUser = selectedUser;
     this.clickButton('openUserInfo');
   }
-  
-/*   public onProfileImageChange(fileName: string, profileImage: File): void {
-    this.fileName =  fileName = '';
-    this.profileImage = profileImage = null;
-  } */
 
-   onProfileImageChange(fileName: string, profileImage: File | null): void {
-    if (profileImage !== null) {
+  /*   public onProfileImageChange(fileName: string, profileImage: File): void {
       this.fileName =  fileName = '';
+      this.profileImage = profileImage = null;
+    } */
+
+  onProfileImageChange(fileName: string, profileImage: File | null): void {
+    if (profileImage !== null) {
+      this.fileName = fileName = '';
       this.profileImage = profileImage;
     }
-  } 
-  
-  
+  }
+
+
 
 
   public saveNewUser(): void {
@@ -108,7 +108,7 @@ export class UserComponent implements OnInit, OnDestroy {
           this.profileImage = null;
         }
       )
-      );
+    );
   }
 
   public onUpdateUser(): void {
@@ -127,7 +127,7 @@ export class UserComponent implements OnInit, OnDestroy {
           this.profileImage = null;
         }
       )
-      );
+    );
   }
 
   public onUpdateCurrentUser(user: User): void {
@@ -137,7 +137,7 @@ export class UserComponent implements OnInit, OnDestroy {
     if (us !== null) {
       this.currentUsername = us.username;
     }
-        const formData = this.userService.createUserFormDate(this.currentUsername, user, this.profileImage as File);
+    const formData = this.userService.createUserFormDate(this.currentUsername, user, this.profileImage as File);
     this.subscriptions.push(
       this.userService.updateUser(formData).subscribe(
         (response: User) => {
@@ -153,7 +153,7 @@ export class UserComponent implements OnInit, OnDestroy {
           this.profileImage = null;
         }
       )
-      );
+    );
   }
 
   public onUpdateProfileImage(): void {
@@ -230,24 +230,25 @@ export class UserComponent implements OnInit, OnDestroy {
     const users = this.userService.getUsersFromLocalCache();
     if (users !== null) {
       for (const user of users) {
-      if (user.firstName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 ||
+        if (user.firstName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 ||
           user.lastName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 ||
           user.username.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 ||
           user.userId.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
           results.push(user);
+        }
+      }
+      this.users = results;
+      if (results.length === 0 || !searchTerm) {
+        const cachedUsers = this.userService.getUsersFromLocalCache();
+        if (cachedUsers !== null) {
+          this.users = cachedUsers;
+        }
       }
     }
-    this.users = results;
-    if (results.length === 0 || !searchTerm) {
-      const cachedUsers = this.userService.getUsersFromLocalCache();
-      if (cachedUsers !== null) {
-        this.users = cachedUsers;
-      }
-    }
-  } }
+  }
 
   public get isAdmin(): boolean {
-    return this.getUserRole() === Role.SUPER_ADMIN;
+    return this.getUserRole() === Role.ADMIN;
   }
 
   private getUserRole(): string {
@@ -256,7 +257,7 @@ export class UserComponent implements OnInit, OnDestroy {
       return user.role;
     }
     return '';
-      }
+  }
 
   private sendNotification(notificationType: NotificationType, message: string): void {
     if (message) {
@@ -268,9 +269,9 @@ export class UserComponent implements OnInit, OnDestroy {
 
   private clickButton(buttonId: string): void {
     const buttonElement = document.getElementById(buttonId);
-if (buttonElement !== null) {
-  buttonElement.click();
-}
+    if (buttonElement !== null) {
+      buttonElement.click();
+    }
   }
 
   ngOnDestroy(): void {

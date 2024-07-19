@@ -13,11 +13,11 @@ import { TokenRefreshRequest } from '../Models/dto/TokenRefreshRequest';
 })
 export class AuthenticationService {
   public host = environment.apiUrl;
-  private token: string ='';
-  private loggedInUsername: string= '';
+  private token: string = '';
+  private loggedInUsername: string = '';
   private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public login(login: LoginRequest): Observable<HttpResponse<LoginResponse>> {
     return this.http.post<LoginResponse>(`${this.host}/camping/auth/signin`, login, { observe: 'response' });
@@ -26,15 +26,16 @@ export class AuthenticationService {
   public register(user: User): Observable<User> {
     return this.http.post<User>(`${this.host}/camping/auth/signup`, user);
   }
-  public logOutFromDB(tokenRefreshRequest: TokenRefreshRequest): Observable<any> {
-    return this.http.post<any>(`${this.host}/camping/auth/logout`, tokenRefreshRequest);
+  public logOutFromDB(token: string): Observable<any> {
+    const body = { token };
+    return this.http.post<any>(`${this.host}/camping/auth/logout`, body);
   }
-  refreshToken(tokenRefreshRequest: TokenRefreshRequest):Observable<any> {
+  refreshToken(tokenRefreshRequest: TokenRefreshRequest): Observable<any> {
     return this.http.post<any>(`${this.host}/camping/auth/refreshtoken`, tokenRefreshRequest);
-}
-public resetPassword(email: string): Observable<any> {
-  return this.http.get<any>(`${this.host}/camping/auth/resetpassword/${email}`);
-}
+  }
+  public resetPassword(email: string): Observable<any> {
+    return this.http.get<any>(`${this.host}/camping/auth/resetpassword/${email}`);
+  }
 
 
 

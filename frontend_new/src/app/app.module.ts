@@ -5,7 +5,6 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
@@ -14,7 +13,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,7 +33,13 @@ import { HeaderComponent } from './Shared/header/header.component';
 import { NotificationService } from './Services/notification.service';
 import { PagingHeaderComponent } from './Shared/paging-header/paging-header.component';
 import { NotificationModule } from './notification.module';
-import { EditUserComponent } from './Components/edit-user/edit-user.component';
+import { FeedbackComponent } from './Components/feedback/feedback.component';
+import { FeedbackListComponent } from './Components/feedback-list/feedback-list.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FeedbackUpdateModalComponent } from './Components/feedback-update-modal/feedback-update-modal.component'; // Adjust path
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input'; import { EditUserComponent } from './Components/edit-user/edit-user.component';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { UserComponent } from './Components/user/user.component';
@@ -63,7 +67,10 @@ import { ResetPasswordComponent } from './Components/reset-password/reset-passwo
     RegisterComponent,
     UserComponent,
     ResetPasswordComponent,
-    PagingHeaderComponent
+    PagingHeaderComponent,
+    FeedbackComponent,
+    FeedbackListComponent,
+    FeedbackUpdateModalComponent,
 
   ],
   imports: [
@@ -83,11 +90,12 @@ import { ResetPasswordComponent } from './Components/reset-password/reset-passwo
     NgbModule,
     MatTableModule,
     NotificationModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
     ToastrModule.forRoot(),
   ],
-  providers: [
-    NotificationService,
-  ],
-  bootstrap: [AppComponent]
+  providers: [NotificationService],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

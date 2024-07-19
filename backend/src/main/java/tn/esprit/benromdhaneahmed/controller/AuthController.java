@@ -28,6 +28,7 @@ import tn.esprit.benromdhaneahmed.services.IUserService;
 
 import javax.mail.MessagingException;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -35,8 +36,6 @@ import java.util.stream.Collectors;
 public class AuthController {
     @Autowired
     IUserService userService;
-  //  @Autowired
-    //PasswordEncoder encoder;
 
     @Autowired
     AuthenticationManager authenticationManager;
@@ -91,16 +90,19 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<?> logoutUser(@Valid @RequestBody TokenRefreshRequest request) {
-        String requestRefreshToken = request.getRefreshToken();
+    public ResponseEntity<?> logoutUser(@Valid @RequestBody Map<String, String> request) {
+        String token = request.get("token");
+        System.out.println("Token received: " + token);
 
-        return refreshTokenService.findByToken(requestRefreshToken)
+        return refreshTokenService.findByToken(token)
                 .map(refreshToken -> {
+                    System.out.println("Refresh token found: " + refreshToken.getToken());
                     refreshTokenService.deleteByUserId(refreshToken.getUser().getId());
                     return ResponseEntity.ok(new MessageResponse("Log out successful!"));
                 })
                 .orElseThrow(() -> new RuntimeException("Refresh token is not in database!"));
     }
+
     @GetMapping("/resetpassword/{email}")
     public ResponseEntity<?> resetPassword(@PathVariable String email) throws MessagingException {
 

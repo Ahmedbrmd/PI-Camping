@@ -1,9 +1,3 @@
-/**
- * Created By Radhwen Kacem
- * Date: 25/05/2024
- * Time : 13:38
- * Project Name : NourCenterBack
- */
 package tn.esprit.benromdhaneahmed.security;
 
 
@@ -61,7 +55,7 @@ public class WebSecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/auth/**").permitAll()
+                        auth.requestMatchers("**").permitAll()
                                 .anyRequest().authenticated()
                 );
         http.authenticationProvider(authenticationProvider());

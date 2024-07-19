@@ -5,6 +5,7 @@ import { AuthenticationService } from '../../Services/authentication.service';
 import { NotificationService } from '../../Services/notification.service';
 import { NotificationType } from '../../enum/notification-type.enum';
 import { Role } from '../../enum/role.enum';
+import { TokenRefreshRequest } from '../../Models/dto/TokenRefreshRequest';
 
 @Component({
   selector: 'app-header',
@@ -20,6 +21,7 @@ export class HeaderComponent {
 
   ngOnInit(): void {
     const user = this.authenticationService.getUserFromLocalCache();
+    console.log("userrrr: ", user);
     if (user !== null) {
       this.user = user;
     }
@@ -37,7 +39,7 @@ export class HeaderComponent {
   }
 
   public get isAdmin(): boolean {
-    return this.getUserRole() === Role.SUPER_ADMIN;
+    return this.getUserRole() === Role.ADMIN;
   }
 
   private getUserRole(): string {
@@ -49,11 +51,36 @@ export class HeaderComponent {
   }
 
 
+
   public onLogOut(): void {
-    this.authenticationService.logOut();
-    this.router.navigate(['/login']);
-    this.sendNotification(NotificationType.SUCCESS, `You've been successfully logged out`);
+    const user = this.authenticationService.getUserFromLocalCache();
+
+    if (user && user.refreshToken) {
+      const refreshToken = user.refreshToken;
+      console.log("refreshToken: ", refreshToken);
+
+      this.authenticationService.logOutFromDB(refreshToken).subscribe(
+        response => {
+          // Clear local storage
+          localStorage.removeItem('user');
+          localStorage.removeItem('token');
+
+          // Navigate to login page
+          this.router.navigate(['/login']);
+        },
+        error => {
+          // Handle error if any
+          console.error("Logout failed: ", error);
+        }
+      );
+    } else {
+      // If no user or refresh token, just clear local storage and navigate
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    }
   }
+
 
   isLoggedIn(): boolean {
     return this.authenticationService.isUserLoggedIn();
