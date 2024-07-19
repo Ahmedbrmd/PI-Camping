@@ -13,18 +13,16 @@ import { RelevantEvent } from '../Models/dto/RelevantEventDto';
 })
 export class EventService {
 
-  apiurl ="http://localhost:8084/";
+  apiurl = "http://localhost:8084/camping/";
 
-  constructor(private httpClient: HttpClient){
-
-  }
+  constructor(private httpClient: HttpClient){}
 
 
   addEvent(event: Event, file:File) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'multipart/form-data');
-
-   return  this.httpClient.post(this.apiurl + 'event', this.convertEventToFormData(event,file)) ;
+console.log(event);
+   return  this.httpClient.post(this.apiurl + 'event'+'/addevent', event) ;
 
   }
 
@@ -38,7 +36,7 @@ export class EventService {
 
   
     getAllEvent() {
-      return this.httpClient.get('http://localhost:8084/event');
+      return this.httpClient.get('http://localhost:8084/camping/event');
     }
 
   getEventById(id: any){
@@ -83,6 +81,7 @@ export class EventService {
 
   }
 
+  
   convertEventToFormData(event: Event, file:File): FormData{
     console.log(event);
     const formData = new FormData();
@@ -94,9 +93,8 @@ export class EventService {
     formData.append('nbParticipant', event.nbParticipant.toString());
     formData.append('category', event.category.toString());
     formData.append('price', event.price.toString());
-    formData.append('videoUrl', event.videoUrl);
     formData.append('idCampPlace', event.idCampPlace!.toString());
-    formData.append('image', file, file.name);
+   /* formData.append('image', file, file.name);*/
     return formData;
   }
 }

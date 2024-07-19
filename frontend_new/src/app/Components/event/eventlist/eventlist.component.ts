@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Options } from "@angular-slider/ngx-slider";
 import { EventService } from '../../../Services/event.service';
 import { EventFilterDto } from '../../../Models/dto/eventFilterDto';
+import { Event } from '../../../Models/Event';
 
 @Component({
   selector: 'app-event-list',
@@ -14,6 +15,7 @@ export class EventListComponent implements OnInit{
   selectedOptions: { [id: number]: boolean } = {};
   categories :any;
   selectedCategories: any;
+  eventList :Event[]=[]
   panelOpenState = false;
   /// slider variables
   options: Options = {
@@ -30,11 +32,11 @@ export class EventListComponent implements OnInit{
     {name: 'Price: Low to high', value: 'price,asc' ,icon: "arrow_upward"},
     {name: 'Price: High to low', value: 'price,desc', icon:"arrow_downward"},
   ];
-  constructor(private eventService : EventService){
+  constructor(private eventServive : EventService){
   }
 
   ngOnInit(): void {
-    this.eventService.getEventCategories().subscribe(
+    this.eventServive.getEventCategories().subscribe(
       response =>{
         this.categories = response
       },
@@ -44,12 +46,16 @@ export class EventListComponent implements OnInit{
     );
 
     this.getFilteredEvents();
+    this.eventServive.getAllEvent().subscribe((data)=>{
+      this.eventList=data as Event[];
+    })
+    
   }
 
 
   getFilteredEvents(){
 
-    this.eventService.getFilteredEvents(this.eventFilter,this.p-1, this.pageSize).subscribe(
+    this.eventServive.getFilteredEvents(this.eventFilter,this.p-1, this.pageSize).subscribe(
       response =>{
         console.log(response);
 

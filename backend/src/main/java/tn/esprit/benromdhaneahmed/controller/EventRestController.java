@@ -42,7 +42,7 @@ public class EventRestController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id) {
+    public void deleteEvent(@PathVariable int id) {
         iEventService.deleteEvent(id);
     }
 

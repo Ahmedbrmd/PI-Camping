@@ -244,23 +244,11 @@ export class CampPlaceTableComponent implements OnInit {
 
           }
 
-
-
-
-
         );
-
-
-
 
       }
 
     })
-
-
-
-
-
 
 
   }

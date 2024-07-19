@@ -1,97 +1,86 @@
+
 <div class="row mt-5 mx-2">
-
     <div class="col-3 filters px-3">
-
-        <div class="p-3 pb-5 py-4">
-
-            <div class="d-flex justify-content-between align-items-center">
-
-                <h5>Filter</h5>
-
-                <button class="btn btn-outline-primary filters-clear" (click)="clearFilter()">Clear</button>
-
-            </div>
-
-            <div class="py-3">
-
-                <h6>Category</h6>
-
-                <mat-chip-listbox aria-label="Fish selection" selectable multiple [(ngModel)]="selectedCategories">
-
-                    <mat-chip-option *ngFor="let category of categories" [value]="category" class="custom-chip"
-                        color="accent" (click)="toggleCategorySelection(category)">
-
-                        {{ formatCategoryName(category) }}
-
-                    </mat-chip-option>
-
-                </mat-chip-listbox>
-
-            </div>
-
-            <div class="py-3">
-
-                <h6>State</h6>
-
-
-            </div>
-
+    <div class="p-3 pb-5 py-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <h5>Filter</h5>
+        <button  class="btn btn-outline-primary filters-clear" (click)="clearFilter()">Clear</button>
+      </div>
+      <div class="py-3">
+        <h6>Category</h6>
+        <mat-chip-listbox  class="btn btn-light" aria-label="Fish selection" selectable multiple [(ngModel)]="selectedCategories">
+          <mat-chip-option  *ngFor="let category of categories" [value]="category"  class="custom-chip" color="accent"  (click)="toggleCategorySelection(category)"  >
+            {{ formatCategoryName(category) }}
+          </mat-chip-option>
+        </mat-chip-listbox>
+      </div>
+      
+      <div class="pb-5">
+        <h6>Date</h6>
+        <div class="row col-12 justify-content-between px-2">
+          <input id="startDate" type="date" name="startDate" [(ngModel)]="eventFilter.startDate" (change)="getFilteredEvents()" class="form-control col-6" style="width:140px;">
+          <input id="endDate" type="date" name="endDate" [(ngModel)]="eventFilter.endDate" (change)="getFilteredEvents()" class="form-control col-6" style="width:140px;">
         </div>
-
+      </div>
     </div>
-
-
-
+  </div>
+  
     <div class="col-9 py-3">
-
-        <div class="d-flex justify-content-between align-items-center pb-3 px-3">
-
-            <app-paging-header class="align-items-center" [totalCount]="totalItems" [pageNumber]="p"
-                [pageSize]="pageSize"> </app-paging-header>
-
-
-
-            <div class="d-flex mt-2 align-items-center">
-
-                <input (keyup.enter)="getFilteredEvents()" type="text" placeholder="Search"
-                    [(ngModel)]="eventFilter.searchTerm" class="search-input form-control me-2" #search>
-
-                <button (click)="getFilteredEvents()" class="btn btn-primary mx-2">Search</button>
-
-                <button (click)="onReset()" class="btn btn-secondary">Reset</button>
-
-
-
-
-
-
-            </div>
-
-
-
+      <div class="d-flex justify-content-between align-items-center pb-3 px-3">
+        <app-paging-header class="align-items-center"
+            [totalCount]="totalItems"
+            [pageNumber]="p"
+            [pageSize]="pageSize"
+        ></app-paging-header>
+  
+        <div class="d-flex mt-2 align-items-center">
+            <input (keyup.enter)="getFilteredEvents()" type="text" placeholder="Search" [(ngModel)]="eventFilter.searchTerm" class="search-input form-control me-2" #search>
+            <button (click)="getFilteredEvents()" class="btn btn-primary mx-2">Search</button>
+            <button (click)="onReset()" class="btn btn-secondary">Reset</button>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon >sort</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item *ngFor="let sort of sortOptions" (click)="selectSortOption(sort.value)" [ngClass]="{'selected-sort' : sort.value==eventFilter.sort}">
+                <mat-icon>{{sort.icon}}</mat-icon>
+                <span>{{sort.name}}</span>
+              </button>
+            </mat-menu>
         </div>
-
-        <div class="row events">
-
-            <div class="col-lg-3 col-md-6 event-container px-0 mx-0 mb-3"
-                *ngFor="let event of events | paginate: { itemsPerPage: 6, currentPage: p , totalItems: totalItems}">
-
-                <app-camp-place-card [campPlace]="event"></app-camp-place-card>
-
-            </div>
-
-        </div>
-
-        <div class="pagination-container">
-
-            <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
-
-        </div>
-
-
-
+  
     </div>
-
-
-
-</div>
+      <div class="row events">
+        <div class="col-lg-4 col-md-6 event-container px-0 mx-0 mb-3" *ngFor="let event of events | paginate: { itemsPerPage: 6, currentPage: p , totalItems: totalItems}">
+          <app-event-card [event]="event"></app-event-card>
+        </div>
+        <table>
+            <tr>
+                
+                <th>Event Name</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Price</th>
+                <th>Participants</th>
+                <th>Show</th>
+            </tr>
+            <tr *ngFor="let p of eventList">
+               
+                <td>{{p.name}}</td>
+                <td>{{p.description}}</td>
+                <td>{{p.startDate}}</td>
+                <td>{{p.endDate}}</td>
+                <td>{{p.price}}</td>
+                <td>{{p.nbParticipant}}</td>
+                <td><button class="btn btn-success" [routerLink]="['/EventDetails',p.idEvent]">Details</button></td>
+            </tr>
+        </table>
+      </div>
+  
+    <div class="pagination-container">
+      <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
+    </div>
+  </div>
+  
+  </div>
+  

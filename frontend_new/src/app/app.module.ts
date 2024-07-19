@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { MatTableModule } from '@angular/material/table';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -37,6 +37,9 @@ import { PagingHeaderComponent } from './Shared/paging-header/paging-header.comp
 import { NotificationModule } from './notification.module';
 import { EventListComponent } from './Components/event/eventlist/eventlist.component';
 import { AddEventComponent } from './Components/event/add-event/add-event.component';
+import { EventCardComponent } from './Components/event/event-card/event-card.component';
+import { EventDetailsComponent } from './Components/event/event-details/event-details.component';
+import { EventTableComponent } from './Components/event/event-table/event-table.component';
 
 @NgModule({
   declarations: [
@@ -58,8 +61,12 @@ import { AddEventComponent } from './Components/event/add-event/add-event.compon
     PagingHeaderComponent,
     EventListComponent,
     AddEventComponent,
+    EventCardComponent,
+    EventDetailsComponent,
+    EventTableComponent,
     AddProductComponent
   ],
+
   imports: [
     BrowserModule,
     CommonModule,
@@ -77,6 +84,7 @@ import { AddEventComponent } from './Components/event/add-event/add-event.compon
     NgbModule,
     MatTableModule,
     NotificationModule,
+    ReactiveFormsModule,
   
     ToastrModule.forRoot(),
   ],

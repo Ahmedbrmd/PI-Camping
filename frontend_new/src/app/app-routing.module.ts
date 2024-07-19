@@ -20,6 +20,10 @@ import { CampPlaceTableComponent } from './Components/campPlace/camp-place-table
 import { HeaderComponent } from './Shared/header/header.component';
 import { EventListComponent } from './Components/event/eventlist/eventlist.component';
 import { AddEventComponent } from './Components/event/add-event/add-event.component';
+import { EventCardComponent } from './Components/event/event-card/event-card.component';
+import { EventDetailsComponent } from './Components/event/event-details/event-details.component';
+import { EventTableComponent } from './Components/event/event-table/event-table.component';
+
 
 
 
@@ -34,17 +38,15 @@ const routes: Routes = [
 
   { path: "ProductCard", component: ProductCardComponent },
   { path: "ProductList", component: ListProductComponent },
-
-  { path: "AddCampPlace", component: AddCampPlaceComponent },
+  { path: "EventCard/:idEvent", component: ProductCardComponent },
+  { path: "AddCampPlace", component: EventCardComponent },
   { path: "CampPlaceDetails/:idCampPlace", component: CampPlaceDetailsComponent },
   { path: "listCampPlace", component: CampPlaceListComponent },
   { path: "AddEvent", component: AddEventComponent },
   { path: "EventList", component: EventListComponent },
-
-
-
+  { path: "EventDetails/:idEvent", component: EventDetailsComponent },
+  { path: "EventTable", component: EventTableComponent },
   { path: "CampPlaceTable", component: CampPlaceTableComponent },
-
   { path: "productTable", component: ProductTableComponent },
 
 
